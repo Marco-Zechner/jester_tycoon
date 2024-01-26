@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class RaycastSelector : MonoBehaviour
 {
+    private Controls controls;
     private Camera playerCamera;
 
     [SerializeField]
@@ -19,7 +21,17 @@ public class RaycastSelector : MonoBehaviour
 
     void OnEnable()
     {
+        controls ??= new Controls();
+        controls.Enable();
         playerCamera = GetComponent<Camera>();
+
+        controls.selectPlaces.SelectPosition.performed += ctx => Select(ctx.ReadValue<Vector2>());
+        controls.selectPlaces.SelectCenter.performed += ctx => Select(new Vector2(Screen.width / 2, Screen.height / 2));
+    }
+
+    void OnDisable()
+    {
+        controls.Disable();
     }
 
     public void Select(Vector2 screenPosition)
@@ -36,7 +48,7 @@ public class RaycastSelector : MonoBehaviour
 
     public void ValidSelection(RaycastHit hit)
     {
-        BuildingSpace placeSpace = hit.collider.GetComponent<BuildingSpace>();
+        BuildingSpace placeSpace = hit.collider.GetComponentInParent<BuildingSpace>();
         if (placeSpace != null)
         {
             onSelectPlaceSpace.Invoke(placeSpace);

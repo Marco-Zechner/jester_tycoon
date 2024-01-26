@@ -92,6 +92,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "selectPlaces",
+            "id": "98232e73-eddb-4c46-a396-0efd16738a5d",
+            "actions": [
+                {
+                    "name": "SelectPosition",
+                    "type": "Value",
+                    "id": "c2e8ccfe-4a01-43d4-81a4-67b8fd8a9e49",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "SelectCenter",
+                    "type": "Button",
+                    "id": "d74741d8-cbdb-4c5c-8d77-4762e562b354",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "One Modifier",
+                    "id": "b0ff368a-cb5c-4508-a62e-f5db99be3886",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectPosition",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "59ce8da5-f108-44b3-af2e-a4bda4d6d5b2",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "28306fd6-7f98-4419-8357-c27120da4a55",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b3faf92f-f877-497d-b48c-ee816137ca0e",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectCenter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

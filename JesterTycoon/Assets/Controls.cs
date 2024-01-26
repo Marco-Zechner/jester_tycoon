@@ -114,6 +114,76 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""selectPlaces"",
+            ""id"": ""98232e73-eddb-4c46-a396-0efd16738a5d"",
+            ""actions"": [
+                {
+                    ""name"": ""SelectPosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""c2e8ccfe-4a01-43d4-81a4-67b8fd8a9e49"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectCenter"",
+                    ""type"": ""Button"",
+                    ""id"": ""d74741d8-cbdb-4c5c-8d77-4762e562b354"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""b0ff368a-cb5c-4508-a62e-f5db99be3886"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPosition"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""59ce8da5-f108-44b3-af2e-a4bda4d6d5b2"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""28306fd6-7f98-4419-8357-c27120da4a55"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b3faf92f-f877-497d-b48c-ee816137ca0e"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectCenter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -122,6 +192,10 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_actionmap = asset.FindActionMap("action map", throwIfNotFound: true);
         m_actionmap_Move = m_actionmap.FindAction("Move", throwIfNotFound: true);
         m_actionmap_Shift = m_actionmap.FindAction("Shift", throwIfNotFound: true);
+        // selectPlaces
+        m_selectPlaces = asset.FindActionMap("selectPlaces", throwIfNotFound: true);
+        m_selectPlaces_SelectPosition = m_selectPlaces.FindAction("SelectPosition", throwIfNotFound: true);
+        m_selectPlaces_SelectCenter = m_selectPlaces.FindAction("SelectCenter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -233,9 +307,68 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public ActionmapActions @actionmap => new ActionmapActions(this);
+
+    // selectPlaces
+    private readonly InputActionMap m_selectPlaces;
+    private List<ISelectPlacesActions> m_SelectPlacesActionsCallbackInterfaces = new List<ISelectPlacesActions>();
+    private readonly InputAction m_selectPlaces_SelectPosition;
+    private readonly InputAction m_selectPlaces_SelectCenter;
+    public struct SelectPlacesActions
+    {
+        private @Controls m_Wrapper;
+        public SelectPlacesActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SelectPosition => m_Wrapper.m_selectPlaces_SelectPosition;
+        public InputAction @SelectCenter => m_Wrapper.m_selectPlaces_SelectCenter;
+        public InputActionMap Get() { return m_Wrapper.m_selectPlaces; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SelectPlacesActions set) { return set.Get(); }
+        public void AddCallbacks(ISelectPlacesActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SelectPlacesActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SelectPlacesActionsCallbackInterfaces.Add(instance);
+            @SelectPosition.started += instance.OnSelectPosition;
+            @SelectPosition.performed += instance.OnSelectPosition;
+            @SelectPosition.canceled += instance.OnSelectPosition;
+            @SelectCenter.started += instance.OnSelectCenter;
+            @SelectCenter.performed += instance.OnSelectCenter;
+            @SelectCenter.canceled += instance.OnSelectCenter;
+        }
+
+        private void UnregisterCallbacks(ISelectPlacesActions instance)
+        {
+            @SelectPosition.started -= instance.OnSelectPosition;
+            @SelectPosition.performed -= instance.OnSelectPosition;
+            @SelectPosition.canceled -= instance.OnSelectPosition;
+            @SelectCenter.started -= instance.OnSelectCenter;
+            @SelectCenter.performed -= instance.OnSelectCenter;
+            @SelectCenter.canceled -= instance.OnSelectCenter;
+        }
+
+        public void RemoveCallbacks(ISelectPlacesActions instance)
+        {
+            if (m_Wrapper.m_SelectPlacesActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISelectPlacesActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SelectPlacesActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SelectPlacesActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SelectPlacesActions @selectPlaces => new SelectPlacesActions(this);
     public interface IActionmapActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+    }
+    public interface ISelectPlacesActions
+    {
+        void OnSelectPosition(InputAction.CallbackContext context);
+        void OnSelectCenter(InputAction.CallbackContext context);
     }
 }

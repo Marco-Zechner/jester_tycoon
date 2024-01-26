@@ -15,20 +15,20 @@ public class UIPlaceholder : MonoBehaviour
     {
         if (buildingSpace != null)
         {
-            buildingSpace.GetComponent<Renderer>().material = material;
+            buildingSpace.GetComponentInChildren<Renderer>().material = material;
         }
 
         buildingSpace = placeSpace;
         Debug.Log("Selected " + placeSpace.name);
 
-        buildingSpace.GetComponent<Renderer>().material = selectedMaterial;
+        buildingSpace.GetComponentInChildren<Renderer>().material = selectedMaterial;
     }
 
     public void Unselect()
     {
         if (buildingSpace != null)
         {
-            buildingSpace.GetComponent<Renderer>().material = material;
+            buildingSpace.GetComponentInChildren<Renderer>().material = material;
         }
     }
 }
