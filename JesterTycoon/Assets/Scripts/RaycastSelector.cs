@@ -16,7 +16,8 @@ public class RaycastSelector : MonoBehaviour
     private LayerMask selectionMask;
 
     [Header("Events")]
-    public UnityEvent<BuildingSpace> onSelectPlaceSpace;
+    public UnityEvent onSelectEmpty;
+    public UnityEvent<BuildingInfo> onSelectBuilding;
     public UnityEvent onUnselect;
 
     void OnEnable()
@@ -51,7 +52,14 @@ public class RaycastSelector : MonoBehaviour
         BuildingSpace placeSpace = hit.collider.GetComponentInParent<BuildingSpace>();
         if (placeSpace != null)
         {
-            onSelectPlaceSpace.Invoke(placeSpace);
+            if (placeSpace.isOccupied)
+            {
+                onSelectBuilding.Invoke(placeSpace.buildingInfo);
+            }
+            else
+            {
+                onSelectEmpty.Invoke();
+            }
         }
     }
 }

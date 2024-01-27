@@ -231,22 +231,13 @@ MonoBehaviour:
   maxRaycastDistance: 1000
   selectionMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  onSelectPlaceSpace:
+    m_Bits: 55
+  onSelectEmpty:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1244743252}
-        m_TargetAssemblyTypeName: UIPlaceholder, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+  onSelectBuilding:
+    m_PersistentCalls:
+      m_Calls: []
   onUnselect:
     m_PersistentCalls:
       m_Calls:
@@ -617,6 +608,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1123217001405959336, guid: 0b054e8eff619db45ba48a5dcfe43d94, type: 3}
+      propertyPath: isOccupied
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123217001405959336, guid: 0b054e8eff619db45ba48a5dcfe43d94, type: 3}
+      propertyPath: buildingInfo.resources.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1123217001405959336, guid: 0b054e8eff619db45ba48a5dcfe43d94, type: 3}
+      propertyPath: buildingInfo.resources.Array.data[0].perSecond
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1139070117496697030, guid: 0b054e8eff619db45ba48a5dcfe43d94, type: 3}
       propertyPath: m_Size.x
       value: 1
