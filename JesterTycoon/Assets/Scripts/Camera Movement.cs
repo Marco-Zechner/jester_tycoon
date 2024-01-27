@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SphereCollider))]
 public class CameraMovement : MonoBehaviour
 {
+    [SerializeField] [Range(1, 10)] float Sensitivity = 1;
     [SerializeField] [Range(1,10)] float Basespeed = 1;
     [SerializeField][Range(1, 20)] float Shiftspeed = 5;
     
@@ -30,19 +31,19 @@ public class CameraMovement : MonoBehaviour
         else 
         { 
             Cursor.visible = true; 
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
     private void rotate()
     {
         
-        if(Cursor.lockState != CursorLockMode.Locked){ StartCoroutine(hidecursor(0.2f)); }
-        _Controls.actionmap.Mouse.performed += ctx => Rotateoffset = ctx.ReadValue<Vector2>();
+        if(Cursor.lockState != CursorLockMode.Locked){ StartCoroutine(Hidecursor(0.2f)); }
+        _Controls.actionmap.Mouse.performed += ctx => Rotateoffset = ctx.ReadValue<Vector2>() * Sensitivity / 10f;
         //transform.Rotate(new Vector3(-Rotateoffset.y,Rotateoffset.x, 0));
-        rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles +new Vector3(-Rotateoffset.y, Rotateoffset.x, 0)));
+        rb.MoveRotation(Quaternion.Euler(rb.rotation.eulerAngles + new Vector3(-Rotateoffset.y, Rotateoffset.x, 0)));
 
     }
-    IEnumerator hidecursor(float delay) 
+    IEnumerator Hidecursor(float delay) 
     {
         yield return new WaitForSeconds(delay);
         if (_Controls.actionmap.Viewer.IsPressed()) 

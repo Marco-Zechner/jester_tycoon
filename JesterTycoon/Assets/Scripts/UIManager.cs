@@ -50,14 +50,14 @@ public class UIManager : MonoBehaviour
     public void DisplayInfo(BuildingSpace space)
     {
         if (space == null) return;
-        int MoneyDiff = space.getUpgradedValueOfType(ResourceType.Money)-space.getValueOfType(ResourceType.Money);
+        int MoneyDiff = space.getUpgradedValueOfType(ResourceType.Money) - space.getValueOfType(ResourceType.Money);
         int FoodDiff = space.getUpgradedValueOfType(ResourceType.Food) - space.getValueOfType(ResourceType.Food);
         int LaughsDiff = space.getUpgradedValueOfType(ResourceType.Laughs) - space.getValueOfType(ResourceType.Laughs);
         int EnergyDiff = space.getUpgradedValueOfType(ResourceType.Energy) - space.getValueOfType(ResourceType.Energy);
 
 
-        buildingTab.SetActive(space.isOccupied);
-        infoTab.SetActive(!space.isOccupied);
+        buildingTab.SetActive(!space.isOccupied);
+        infoTab.SetActive(space.isOccupied);
 
         buildingName.text = space.buildingInfo.buildingName;
         description.text = space.buildingInfo.description;
@@ -73,24 +73,24 @@ public class UIManager : MonoBehaviour
         
         
 
-        if (space.hasUpgrade() == true)
+        if (space.hasUpgrade())
         {
-                  upgradeCost.text = space.buildingInfo.upgradeCost.ToString();
-              }
-              if (space.hasUpgrade() == false)
-              {
-                  upgradeButton.interactable = false;
-              }
-            NextEnergyArrowDown.SetActive(MoneyDiff < 0);
-            NextEnergyArrowUp.SetActive(MoneyDiff > 0);
-            NextEnergyArrowDown.SetActive(EnergyDiff < 0);
-            NextEnergyArrowUp.SetActive(EnergyDiff > 0);
-            NextEnergyArrowDown.SetActive(FoodDiff< 0);
-            NextEnergyArrowUp.SetActive(FoodDiff > 0);
-            NextEnergyArrowDown.SetActive(LaughsDiff < 0);
-            NextEnergyArrowUp.SetActive(LaughsDiff > 0);
+            upgradeCost.text = space.buildingInfo.upgradeCost.ToString();
+        }
+        else
+        {
+            upgradeButton.interactable = false;
+            upgradeCost.text = "Max Lvl";
+        }
 
-        //      ToDo: getUpgradedValueOfType(ResourceType type)
+        NextMoneyArrowDown.SetActive(MoneyDiff < 0);
+        NextMoneyArrowUp.SetActive(MoneyDiff > 0);
+        NextEnergyArrowDown.SetActive(EnergyDiff < 0);
+        NextEnergyArrowUp.SetActive(EnergyDiff > 0);
+        NextFoodArrowDown.SetActive(FoodDiff< 0);
+        NextFoodArrowUp.SetActive(FoodDiff > 0);
+        NextLaughsArrowDown.SetActive(LaughsDiff < 0);
+        NextLaughsArrowUp.SetActive(LaughsDiff > 0);
     }
 
 }

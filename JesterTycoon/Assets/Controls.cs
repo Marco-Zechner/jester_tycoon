@@ -224,6 +224,74 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""placeMap"",
+            ""id"": ""bcdd619d-cf22-4fb3-8edb-687533273601"",
+            ""actions"": [
+                {
+                    ""name"": ""Rotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""017a7d31-9976-4b3c-975e-ffbe704e87c8"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Place"",
+                    ""type"": ""Button"",
+                    ""id"": ""07aaa61d-dfc7-45b1-8ff0-fd2f40a8ef9e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Position"",
+                    ""type"": ""Value"",
+                    ""id"": ""5613cb9f-e86a-408e-90da-6e9e3c8d6f9d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""614004e6-5924-4f4c-a371-3365decbe477"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Rotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c162f2ab-f18d-491e-a7d8-fd57a5fc56f4"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Place"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46a2ff99-d0ac-4068-b190-a9da21fa4ec4"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Position"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -238,6 +306,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_selectPlaces = asset.FindActionMap("selectPlaces", throwIfNotFound: true);
         m_selectPlaces_SelectPosition = m_selectPlaces.FindAction("SelectPosition", throwIfNotFound: true);
         m_selectPlaces_SelectCenter = m_selectPlaces.FindAction("SelectCenter", throwIfNotFound: true);
+        // placeMap
+        m_placeMap = asset.FindActionMap("placeMap", throwIfNotFound: true);
+        m_placeMap_Rotate = m_placeMap.FindAction("Rotate", throwIfNotFound: true);
+        m_placeMap_Place = m_placeMap.FindAction("Place", throwIfNotFound: true);
+        m_placeMap_Position = m_placeMap.FindAction("Position", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -419,6 +492,68 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public SelectPlacesActions @selectPlaces => new SelectPlacesActions(this);
+
+    // placeMap
+    private readonly InputActionMap m_placeMap;
+    private List<IPlaceMapActions> m_PlaceMapActionsCallbackInterfaces = new List<IPlaceMapActions>();
+    private readonly InputAction m_placeMap_Rotate;
+    private readonly InputAction m_placeMap_Place;
+    private readonly InputAction m_placeMap_Position;
+    public struct PlaceMapActions
+    {
+        private @Controls m_Wrapper;
+        public PlaceMapActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Rotate => m_Wrapper.m_placeMap_Rotate;
+        public InputAction @Place => m_Wrapper.m_placeMap_Place;
+        public InputAction @Position => m_Wrapper.m_placeMap_Position;
+        public InputActionMap Get() { return m_Wrapper.m_placeMap; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlaceMapActions set) { return set.Get(); }
+        public void AddCallbacks(IPlaceMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_PlaceMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlaceMapActionsCallbackInterfaces.Add(instance);
+            @Rotate.started += instance.OnRotate;
+            @Rotate.performed += instance.OnRotate;
+            @Rotate.canceled += instance.OnRotate;
+            @Place.started += instance.OnPlace;
+            @Place.performed += instance.OnPlace;
+            @Place.canceled += instance.OnPlace;
+            @Position.started += instance.OnPosition;
+            @Position.performed += instance.OnPosition;
+            @Position.canceled += instance.OnPosition;
+        }
+
+        private void UnregisterCallbacks(IPlaceMapActions instance)
+        {
+            @Rotate.started -= instance.OnRotate;
+            @Rotate.performed -= instance.OnRotate;
+            @Rotate.canceled -= instance.OnRotate;
+            @Place.started -= instance.OnPlace;
+            @Place.performed -= instance.OnPlace;
+            @Place.canceled -= instance.OnPlace;
+            @Position.started -= instance.OnPosition;
+            @Position.performed -= instance.OnPosition;
+            @Position.canceled -= instance.OnPosition;
+        }
+
+        public void RemoveCallbacks(IPlaceMapActions instance)
+        {
+            if (m_Wrapper.m_PlaceMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IPlaceMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_PlaceMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_PlaceMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public PlaceMapActions @placeMap => new PlaceMapActions(this);
     public interface IActionmapActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -430,5 +565,11 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnSelectPosition(InputAction.CallbackContext context);
         void OnSelectCenter(InputAction.CallbackContext context);
+    }
+    public interface IPlaceMapActions
+    {
+        void OnRotate(InputAction.CallbackContext context);
+        void OnPlace(InputAction.CallbackContext context);
+        void OnPosition(InputAction.CallbackContext context);
     }
 }

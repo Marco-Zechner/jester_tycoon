@@ -12,16 +12,6 @@ public class BuildingSpace : MonoBehaviour
     public int getValueOfType(ResourceType type)
     {
         int sum = 0;
-        if (placeInfo != null && placeInfo.Resources != null)
-        {
-            foreach (DependentResource resource in placeInfo.Resources)
-            {
-                if (resource.type == type)
-                {
-                    sum += resource.amount;
-                }
-            }
-        }
 
         if (buildingInfo != null && buildingInfo.resources != null)
         {

@@ -1,7 +1,8 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class PlaceInfo {
-    public string Description;
-    public DependentResource[] Resources;
+public class PlaceInfo : MonoBehaviour{
+    public PlaceInfo parentPlace = null;
+    [SerializeField]
+    public List<PlaceInfo> childPlaces = new List<PlaceInfo>();
 }
