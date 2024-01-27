@@ -12,6 +12,6 @@ public class BuildingInfo
     public Resource upgradeCost;
 
     [Header("Resources")]
-    public ResourceOverTime[] resources;
+    public DependentResource[] resources;
 
 }

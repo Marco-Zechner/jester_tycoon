@@ -44,6 +44,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""25cdaabb-f3c0-4213-8f68-ab8218306846"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Viewer"",
+                    ""type"": ""Button"",
+                    ""id"": ""dbe3f260-ae80-4fb3-bc35-64989cc19e18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +128,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Shift"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1763db87-2cce-4b35-953e-8c33eaddbcef"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5363b034-5c74-406e-b839-f20bbcb04538"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Viewer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -192,6 +232,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_actionmap = asset.FindActionMap("action map", throwIfNotFound: true);
         m_actionmap_Move = m_actionmap.FindAction("Move", throwIfNotFound: true);
         m_actionmap_Shift = m_actionmap.FindAction("Shift", throwIfNotFound: true);
+        m_actionmap_Mouse = m_actionmap.FindAction("Mouse", throwIfNotFound: true);
+        m_actionmap_Viewer = m_actionmap.FindAction("Viewer", throwIfNotFound: true);
         // selectPlaces
         m_selectPlaces = asset.FindActionMap("selectPlaces", throwIfNotFound: true);
         m_selectPlaces_SelectPosition = m_selectPlaces.FindAction("SelectPosition", throwIfNotFound: true);
@@ -259,12 +301,16 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<IActionmapActions> m_ActionmapActionsCallbackInterfaces = new List<IActionmapActions>();
     private readonly InputAction m_actionmap_Move;
     private readonly InputAction m_actionmap_Shift;
+    private readonly InputAction m_actionmap_Mouse;
+    private readonly InputAction m_actionmap_Viewer;
     public struct ActionmapActions
     {
         private @Controls m_Wrapper;
         public ActionmapActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_actionmap_Move;
         public InputAction @Shift => m_Wrapper.m_actionmap_Shift;
+        public InputAction @Mouse => m_Wrapper.m_actionmap_Mouse;
+        public InputAction @Viewer => m_Wrapper.m_actionmap_Viewer;
         public InputActionMap Get() { return m_Wrapper.m_actionmap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -280,6 +326,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shift.started += instance.OnShift;
             @Shift.performed += instance.OnShift;
             @Shift.canceled += instance.OnShift;
+            @Mouse.started += instance.OnMouse;
+            @Mouse.performed += instance.OnMouse;
+            @Mouse.canceled += instance.OnMouse;
+            @Viewer.started += instance.OnViewer;
+            @Viewer.performed += instance.OnViewer;
+            @Viewer.canceled += instance.OnViewer;
         }
 
         private void UnregisterCallbacks(IActionmapActions instance)
@@ -290,6 +342,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Shift.started -= instance.OnShift;
             @Shift.performed -= instance.OnShift;
             @Shift.canceled -= instance.OnShift;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
+            @Viewer.started -= instance.OnViewer;
+            @Viewer.performed -= instance.OnViewer;
+            @Viewer.canceled -= instance.OnViewer;
         }
 
         public void RemoveCallbacks(IActionmapActions instance)
@@ -365,6 +423,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnShift(InputAction.CallbackContext context);
+        void OnMouse(InputAction.CallbackContext context);
+        void OnViewer(InputAction.CallbackContext context);
     }
     public interface ISelectPlacesActions
     {

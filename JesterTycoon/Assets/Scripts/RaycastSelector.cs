@@ -16,7 +16,7 @@ public class RaycastSelector : MonoBehaviour
     private LayerMask selectionMask;
 
     [Header("Events")]
-    public UnityEvent onSelectEmpty;
+    public UnityEvent<PlaceInfo> onSelectEmpty;
     public UnityEvent<BuildingInfo> onSelectBuilding;
     public UnityEvent onUnselect;
 
@@ -58,7 +58,7 @@ public class RaycastSelector : MonoBehaviour
             }
             else
             {
-                onSelectEmpty.Invoke();
+                onSelectEmpty.Invoke(placeSpace.placeInfo);
             }
         }
     }

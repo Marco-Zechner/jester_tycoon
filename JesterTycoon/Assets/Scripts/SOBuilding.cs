@@ -11,7 +11,7 @@ public class SOBuilding : ScriptableObject
     [HideLabel]
     [MultiLineProperty(10)]
     public string description;
-    public ResourceOverTime[] constantResources;
+    public DependentResource[] constantResources;
     [Header("Building Stages")]
     public Stage[] stages;
 }
@@ -21,5 +21,5 @@ public class Stage {
     public Resource cost;
     public GameObject prefab;
     [Header("Resources")]
-    public ResourceOverTime[] resources;
+    public DependentResource[] resources;
 }

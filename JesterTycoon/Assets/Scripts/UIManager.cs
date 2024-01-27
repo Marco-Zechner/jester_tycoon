@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     public GameObject infoTab;
 
     [Header("UI Elements - Building Tab")]
+    public TMP_Text placeDescription;
     public List<SOBuilding> availableBuildings;
     public GameObject ListElementPrefab;
     public Transform ListElementParent;
@@ -35,6 +36,11 @@ public class UIManager : MonoBehaviour
     {
         if (space == null) return;
 
+        buildingTab.SetActive(space.isOccupied);
+        infoTab.SetActive(!space.isOccupied);
+
         buildingName.text = space.buildingInfo.buildingName;
+        description.text = space.buildingInfo.description;
+        ResourceMoney.text = space.getValueOfType(ResourceType.Money) + " Money";
     }
 }
