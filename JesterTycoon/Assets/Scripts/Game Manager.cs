@@ -6,7 +6,8 @@ using UnityEngine;
 public static class GameManager
 {
     enum Value { Money, Laughs, Food, Power, Visitors };
-    static Dictionary<Value,int> Values = new Dictionary<Value, int>() ;
+    static Dictionary<Value,int> Values = new Dictionary<Value, int>();
+
     public static void start(int money,int MultieplierConserionRate,float PopUpDelay,MonoBehaviour Mono)
     {
         Values.Add(Value.Money,money);
@@ -34,7 +35,8 @@ public static class GameManager
     static IEnumerator EventPrompt(float delay,MonoBehaviour mono)
     {
         yield return new WaitForSeconds(delay);
-        checkValue(Value.Money, 100, out int ReturnAmount);
+        PopUpHandler.instance.ShowPopUp();
+
         mono.StartCoroutine(EventPrompt(delay,mono));
     }
 }

@@ -1,0 +1,281 @@
+:: StoryTitle
+Comedy Park Tycoon-Test
+
+
+:: StoryData
+{
+  "ifid": "53F0E65E-0BFE-443A-A9C1-EFDB848F2C16",
+  "format": "Harlowe",
+  "format-version": "3.3.8",
+  "tag-colors": {
+    "Customers": "none",
+    "Story": "purple",
+    "General-Events": "green",
+    "Interaction-with-the-Staff": "none"
+  },
+  "zoom": 0.6
+}
+
+
+:: "Can you come back in 10 minutes, then I would love to talk about it." {"position":"3700,1650","size":"100,100"}
+That was really polite of you, you gain <+Laughs>(10) amount of Laughs.
+
+
+:: "Eh, i dont have time for this kind of nonesense." {"position":"3475,1625","size":"100,100"}
+She loved your park and you are rude about it? You loose <-Laughs>(40) amount of Laughs.
+
+
+:: "Ehhhh nooooo, I just pretend to." {"position":"3500,1325","size":"100,100"}
+How rude are you? You loose <-Laughs>(20) amount of Laughs.
+
+
+:: "Exuse me? Are you out of your mind." {"position":"3875,1325","size":"100,100"}
+Thats not the way to talk to your customer! You loose <-Laughs>(40) amount of Laughs.
+
+
+:: "I am gonna call you back later!" {"position":"2150,1375","size":"100,100"}
+The customer is really gratfull that you hear her first, you gain <+Laughs>(20) amount of Laughs!
+
+
+:: "I am sorry I cant do that, but you can go to the childcare service." {"position":"2575,1625","size":"100,100"}
+That was very courteous of you, you gain <+Laughs>(20) amount of Laughs.
+
+
+:: "I am very sorry but its still costs money." {"position":"4100,1325","size":"100,100"}
+Thats probaly not what they wanted to hear but you still were polite. So you still gain <+Laughs>(10) amount of Laughs.
+
+
+:: "I am very sorry madam, I will look into that issue." {"position":"3200,1350","size":"100,100"}
+You really handle your customer with care, you get <-Laughs>(25) amount of Laughs, congrats!
+
+
+:: "I dont have time for this, go away!" {"position":"4650,1700","size":"100,100"}
+Exuse me? How cant you help that poor Grandpa. You loose <-Laughs>(50) amount of Laughs.
+
+
+:: "I need to pay my staff a living wage." {"position":"4275,1650","size":"100,100"}
+You were able to calm them down and they left. You gain <+Laughs>(10) amount of Laughs!
+
+
+
+:: "I wanna get rich as fast as possible" {"position":"4500,1650","size":"100,100"}
+They continue to storm at you and trampled you down, how embarissing. You loose <-Laughs>(30) amount of Laughs.
+
+
+:: "I want to bring joy to everybody, its my dream to rebuild this Park." {"position":"2825,1350","size":"100,100"}
+Wow, thats so inspiring, you get <+Laughs>(20) amount of Laughs, congrats!
+
+
+:: "I want to make lots of money and make people laugh." {"position":"2550,1350","size":"100,100"}
+Oh no that was the not an good answer, you loose <-Laughs>(30) amount of Laughs.
+
+
+:: "My staff is lovely, they are doing their best." {"position":"3025,1350","size":"100,100"}
+Oh no that was the wrong answer, you loose <-Laughs>(5) amount of Laughs.
+
+
+:: "No, why would you even ask that?" {"position":"1525,1350","size":"100,100"}
+The assiantant Manger stormed out and screamed at some customers. You loose <-Laughs>(20) amount of Laughs.
+
+
+:: "No, your opinion is important to me but we cant close the park." {"position":"1300,1350","size":"100,100"}
+After talking a bit more, your assistant Manger got a bit more relaxed. You gain <+Laughs>(10) amount of Laughs!
+
+
+:: "No?! Why should I do that." {"position":"4075,1650","size":"100,100"}
+What a stupid Scammer, the people are proud of you for seeing through his disguise. You gain <+Laughs>(25) amount of Laughs.
+
+
+:: "Of course, but you need to come early tomorrow." {"position":"1700,1375","size":"100,100"}
+You are very nice to your employees and the customer notices that, you gain <+Laughs>(10) amount of Laughs!
+
+
+:: "Of course, just follow me to the customer service." {"position":"4875,1350","size":"100,100"}
+They were actually lost, you are so good at caring for your customers. You gain <+Laughs>(30) amount of Laughs.
+
+
+:: "Of course, right this way!" {"position":"3250,1650","size":"100,100"}
+That was very helpful of you, you gain <+Laughs>(10) amount of Laughs.
+
+
+:: "Okay, just be quick!" {"position":"2350,1375","size":"100,100"}
+The customer becomes really angry and stormes of while yelling curse words, you loose <-Laughs>(20) amount of Laughs.
+
+
+:: "Poor planning on your part does not necessitate an emergency on mine." {"position":"1950,1375","size":"100,100"}
+You are so rude and that infront of customers! You loose <-Laughs>(15) amount of Laughs.
+
+
+:: "Sorry, but all of the comedians first need to take a Course. You can apply for that on our Website." {"position":"4500,1350","size":"100,100"}
+Everybody is happy that you didnt trust that Scammer. You Gain <+Laughs>(10) amount of Laughs.
+
+
+:: "Sure, if its only for a minute." {"position":"2800,1625","size":"100,100"}
+Well, the mother never came back and now your questioned by the police, you loose <+Laughs>(50) amount of Laughs.
+
+
+:: "Sure, just give me your card and you PIN." {"position":"3050,1650","size":"100,100"}
+Well, thats a crime and the old Lady swings her handbag at you, ouch. You loose <-Laughs>(30) amount of Laughs.
+
+
+:: "Sure, why not? You seem trustfull. {"position":"3900,1650","size":"100,100"}
+Well, that was scam and no evrybody is sneering you. You loose <-Laughs>(30) amount of Laughs. Pitty you.
+
+
+:: "That sound amazing, we are very honoured!" {"position":"4300,1350","size":"100,100"}
+Well that was a lie, she was so bad, a child started to cry. You loose <-Laughs>(30) amount of Laughs.
+
+
+:: "We will make an announcment to find her." {"position":"4875,1675","size":"100,100"}
+Thats how you treat helpless customers! You gain <+Laughs>(50) amount of Laughs.
+
+
+:: "Yes I do, how can I help you?" {"position":"3700,1325","size":"100,100"}
+How diplomatic of you, you gain <+Laughs>(20) amount of Laughs.
+
+
+:: "You cant be serious, you are banned in this Park!" {"position":"4625,1350","size":"100,100"}
+Did you have a bad day? That was very rude, you loose <-Laughs>(25) amount of Laughs.
+
+
+:: #A young Mom [Customers] {"position":"2675,1500","size":"100,100"}
+A young Mom is approaching you with her kid on her arm. She looks very friendly but still a little bit overbearing.
+
+"Can you look after my baby for a second? Just need to watch the next show."
+
+[["I am sorry I cant do that, but you can go to the childcare service."]]
+[["Sure, if its only for a minute."]]
+
+
+:: #An old Lady [Customers] {"position":"3125,1525","size":"100,100"}
+An old Lady apporaches you, she is a big shiny purse that looks to be filled to the brim with Giftshop Items, she looks very confused.
+
+"Exuse me, do you know where the ATM is, I got lost. 
+
+[["Of course, right this way!"]]
+[["Sure, just give me your card and you PIN."]]
+
+
+
+:: #Assistant Manager [Interaction-with-the-Staff] {"position":"1425,1200","size":"100,100"}
+Your assistant Manger approaches you, she looks unhappy and in a bad mood.
+
+"Ugh can you just close the park for today, everybody is sooo rude."
+
+[["No, your opinion is important to me but we cant close the park."]]
+[["No, why would you even ask that?"]]
+
+
+
+:: #Confused Customer [Customers] {"position":"3575,1200","size":"100,100"}
+As you were talking to a staff person and clearly working a man approches you, looking quite confused.
+
+"Do you work here?"
+
+[["Ehhhh nooooo, I just pretend to."]]
+[["Yes I do, how can I help you?"]]
+
+
+:: #Demonstrators [Customers] {"position":"4375,1525","size":"100,100"}
+A bunch of Demonstartors forcfully entered your park and are stroming at you!
+
+"WHY IS YOUR PARK SO EXENSIVE?!!"
+
+[["I need to pay my staff a living wage."]]
+[["I wanna get rich as fast as possible"]]
+
+
+
+:: #Grandpa with Dementia [Customers] {"position":"4750,1550","size":"100,100"}
+A scarred looking old Man ist running, well at least trying, towards you, he is a bit out of breath.
+
+"Help me, I lost my wife at the last Comedy Show!"
+
+[["I dont have time for this, go away!"]]
+[["We will make an announcment to find her."]]
+
+
+
+:: #Happy Customer {"position":"3575,1500","size":"100,100"}
+An very happy looking customers tries to get your attention while your operating a Foodstand.
+
+"Thank you for this amzing Park!! What was your idea behind it?"
+
+[["Eh, i dont have time for this kind of nonesense."]]
+[["Can you come back in 10 minutes, then I would love to talk about it."]]
+
+
+
+
+:: #New Customer [Customers] {"position":"2675,1225","size":"100,100"}
+A new customer approaches you, he looks very friendly and hopefull.
+
+"What do you want to do with this worn down Park, I went here as a kid alot"
+
+[["I want to make lots of money and make people laugh."]]
+[["I want to bring joy to everybody, its my dream to rebuild this Park."]]
+
+
+:: #Repairman [Interaction-with-the-Staff] {"position":"2225,1225","size":"100,100"}
+On of the repairmans is calling you, but you are currently talking to a customer.
+
+"I need to talk to you about on of the Building."
+
+[["I am gonna call you back later!"]]
+[["Okay, just be quick!"]]
+
+
+
+:: #Rude Customer [Customers] {"position":"3125,1225","size":"100,100"}
+A angry looking mother approchaes you and her face is bright red, she has a sad looking kid by here site who is holding a stuffed giraffe.
+
+"That isnt funny at all, for my kid!!!! Why you dont hire more entertaining people?!!"
+
+[["My staff is lovely, they are doing their best."]]
+[["I am very sorry madam, I will look into that issue."]]
+
+
+:: #Teenagers [Customers] {"position":"4750,1200","size":"100,100"}
+A group of Teenagers get in your way, the look like they are gonna make some Trouble.
+
+"Can you help us find our Moms? We are soooo Lost."
+
+[["You cant be serious, you are banned in this Park!"]]
+[["Of course, just follow me to the customer service."]]
+
+
+:: #The British Celebrity [Customers] {"position":"4375,1200","size":"100,100"}
+A very handsome looking Woman is stopping you in your way, she mumbles something in a very bad Britsh accent. You stare at here and she repeats herself.
+
+"I am very famous in Great Britain, let me perform on your stage and refund my ticket to the Park."
+
+[["That sound amazing, we are very honoured!"]]
+[["Sorry, but all of the comedians first need to take a Course. You can apply for that on our Website."]]
+
+
+
+:: #The Prince [Customers] {"position":"4000,1525","size":"100,100"}
+A tall men is approaching you, he looks very rich and has a Butler walking behind him.
+
+"My friend, I burried here some Money, a long time ago. If you give me 50 of your ChuckleBugs You get half of it!"
+
+[["Sure, why not? You seem trustfull.]]
+[["No?! Why should I do that."]]
+
+
+:: #Waiter [Interaction-with-the-Staff] {"position":"1825,1225","size":"100,100"}
+One of your ne waiters approaches you, he looks confident and really happy with his workspace.
+
+"Can I leave early today, I need to visit my Mom"
+
+[["Of course, but you need to come early tomorrow."]]
+[["Poor planning on your part does not necessitate an emergency on mine."]]
+
+
+:: #´Funny´ Customer [Customers] {"position":"3975,1200","size":"100,100"}
+You are curently helping out at the Giftshop and a customer approaches you with a ´Comedy Handbook for Dummies´ and she looks at you very proud of herself.
+
+"The price is missing, so its for free right?!"
+
+[["Exuse me? Are you out of your mind."]]
+[["I am very sorry but its still costs money."]]
