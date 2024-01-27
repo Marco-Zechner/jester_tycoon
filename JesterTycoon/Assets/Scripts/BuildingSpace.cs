@@ -46,4 +46,8 @@ public class BuildingSpace : MonoBehaviour
     {
         return 0;
     }
+    public int sellValue()
+    {
+        return 0;
+    }
 }

@@ -65,19 +65,19 @@ public class UIManager : MonoBehaviour
         ResourceEnergy.text = "Energy: " + space.getValueOfType(ResourceType.Energy);
         ResourceLaughs.text = "Laughs: " + space.getValueOfType(ResourceType.Laughs);
         ResourceFood.text = "Food: " + space.getValueOfType(ResourceType.Food);
-        Sell.GetComponentInChildren<TMP_Text>().text = space.buildingInfo.sellValue;
-        NextEnergy.text = space.getUpgradedValueOfType(ResourceType.Energy);
-        NextMoney.text = space.getUpgradedValueOfType(ResourceType.Money);
-        NextLaughs.text = space.getUpgradedValueOfType(ResourceType.Laughs);
-        NextFood.text = space.getUpgradedValueOfType(ResourceType.Food);
+        Sell.GetComponentInChildren<TMP_Text>().text = space.sellValue().ToString();
+        NextEnergy.text = space.getUpgradedValueOfType(ResourceType.Energy).ToString();
+        NextMoney.text = space.getUpgradedValueOfType(ResourceType.Money).ToString();
+        NextLaughs.text = space.getUpgradedValueOfType(ResourceType.Laughs).ToString();
+        NextFood.text = space.getUpgradedValueOfType(ResourceType.Food).ToString();
         
         
 
-        //    ToDo: if (hasUpgrade == true)
+        if (space.hasUpgrade() == true)
         {
                   upgradeCost.text = space.buildingInfo.upgradeCost.ToString();
               }
-              //     ToDo: if (hasUpgrade == false)
+              if (space.hasUpgrade() == false)
               {
                   upgradeButton.interactable = false;
               }
