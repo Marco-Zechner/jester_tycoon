@@ -36,4 +36,14 @@ public class BuildingSpace : MonoBehaviour
         
         return sum;
     }
+
+    public bool hasUpgrade()
+    {
+        return false; 
+    }
+
+    public int getUpgradedValueOfType(ResourceType type)
+    {
+        return 0;
+    }
 }

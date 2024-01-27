@@ -8,6 +8,7 @@ public class BuildingInfo
     [TextArea]
     public string description;
     public int durability;
+    public int sellValue;
 
     public Resource upgradeCost;
 
