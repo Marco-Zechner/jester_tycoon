@@ -96,6 +96,7 @@ public class BuildingManager : MonoBehaviour
         currentBuilding = Instantiate(buildingSOs[index].stages[0].prefab);
         currentBuilding.transform.parent = currentGround.transform;
         currentBuilding.transform.localPosition = Vector3.zero;
+        currentBuilding.transform.localRotation = Quaternion.identity;
 
     }
 

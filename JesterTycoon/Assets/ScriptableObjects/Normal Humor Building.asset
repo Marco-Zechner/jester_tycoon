@@ -23,5 +23,5 @@ MonoBehaviour:
   - cost:
       type: 0
       amount: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 5262493540815680854, guid: 35f4f20e825f7244a9926f316718e5f2, type: 3}
     resources: []

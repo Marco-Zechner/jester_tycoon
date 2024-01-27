@@ -277,6 +277,9 @@ MonoBehaviour:
   - {fileID: 1904074152391614350}
   buildingSOs:
   - {fileID: 11400000, guid: 66013f95937e5f34ab081034a8a5abf3, type: 2}
+  - {fileID: 11400000, guid: f112daf23a8bbdd4a92182f3b0a970dc, type: 2}
+  - {fileID: 11400000, guid: 7aa1424fab1459947bd7ef68eba72a18, type: 2}
+  - {fileID: 11400000, guid: ee9966df5692e3847ae8fab93fb59631, type: 2}
   currentBuildingIndex: 0
   ObjectHolder: {fileID: 1893377839}
   roadPrefab: {fileID: 7808951879243110733, guid: a96cc74255f2cd8448c4549d3a3ffdaf, type: 3}
@@ -674,8 +677,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Sensitivity: 1
-  Basespeed: 1
-  Shiftspeed: 5
+  Basespeed: 5
+  Shiftspeed: 8
 --- !u!135 &2060690935
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -899,6 +902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb46d24d92ff11d4494a5f5e89b2e85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPlace: {fileID: 0}
   childPlaces: []
 --- !u!23 &7544827594307463139
 MeshRenderer:

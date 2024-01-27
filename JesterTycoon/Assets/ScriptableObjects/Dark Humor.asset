@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Dark Humor
   m_EditorClassIdentifier: 
   buildingName: 2
-  description: 
+  description: This circus tent is whimsical. It is a place where joy is mixed with
+    dark humour, and each act parodies the very notion of entertainment. The comedy
+    is as sharp as the tent's peaks.
   constantResources: []
   stages:
   - cost:
       type: 0
       amount: 0
-    prefab: {fileID: 2323535004440023916, guid: 483edb6eeddf93c4caccf90451b53122, type: 3}
+    prefab: {fileID: 8246878225529202956, guid: 293c37fbfda859d43b98ce593cd14058, type: 3}
     resources: []
