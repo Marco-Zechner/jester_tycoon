@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Office Humor Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Corporate Humor Building
+  description: This four-story building has a rather gloomy appearance and is your
+    sandbox building for Fun. Each window presents a different vocational scene.
+    Here, every floor tells its own story of corporate quirks and keyboard warriors.
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []

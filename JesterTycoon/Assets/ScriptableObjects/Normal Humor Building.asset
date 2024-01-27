@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Normal Humor Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Dad humor Building
+  description: 'The Pavilion of Playfulness is a charming circus tent where laughter
+    is always in the air. Its classic red and white stripes and welcoming open door
+    make it the heart of hilarity in a game of joyful jests. Inside, every joke lands
+    softly like a tumbling acrobat, and every act is a delightful dance of wit and
+    whimsy. '
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []

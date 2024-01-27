@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Staff Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Staff Building
+  description: This Staff Sanctum is a minimalist building that serves as a hideaway
+    for staff. Its bold design is complemented by the bold lettering that announces
+    its purpose.
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []

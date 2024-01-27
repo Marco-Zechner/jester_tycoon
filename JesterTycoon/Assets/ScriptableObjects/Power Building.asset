@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Power Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Power Plant
+  description: The handsome power plant. Its industrial design, full of metal grating
+    and external pipework, a plant pulsating with the lifeblood of electricity. Rooftop
+    units with advanced technology, housing generators and cooling systems vital
+    to the operation inside. Responsible for keeping the lights on.
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []

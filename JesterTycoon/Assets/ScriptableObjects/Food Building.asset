@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Food Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Food Booth
+  description: The heavenly food palace. The most delicious burgers and drinks are
+    served by skilled workers and passionate managers. You should never have hungry
+    customers, they'll get angry.
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []

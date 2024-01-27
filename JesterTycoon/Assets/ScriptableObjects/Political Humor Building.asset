@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Political Humor Building
   m_EditorClassIdentifier: 
-  buildingName: 
-  description: 
+  buildingName: Political Humor Building
+  description: 'Imagine a satirical government building, dubbed the ''Capitol of
+    Comedy'' with an exaggerated sense of grandeur. Its facade features an array
+    of comically oversized windows, trying to show power. This structure represents
+    not order, but the controlled chaos of satire, where each policy is open to puns
+    and every action of a legislator is met with a joke. '
   constantResources: []
-  stages: []
+  stages:
+  - cost:
+      type: 0
+      amount: 0
+    prefab: {fileID: 0}
+    resources: []
