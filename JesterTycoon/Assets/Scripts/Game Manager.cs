@@ -34,8 +34,7 @@ public static class GameManager
     static IEnumerator EventPrompt(float delay,MonoBehaviour mono)
     {
         yield return new WaitForSeconds(delay);
-        if(checkValue(Value.Money,100,out int ReturnAmount)) { Debug.Log(ReturnAmount); }
-        else { Debug.Log("You ran out off man Game over"); }
+        checkValue(Value.Money, 100, out int ReturnAmount);
         mono.StartCoroutine(EventPrompt(delay,mono));
     }
 }
