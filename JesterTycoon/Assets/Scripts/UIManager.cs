@@ -20,27 +20,77 @@ public class UIManager : MonoBehaviour
     [Header("UI Elements - Info Tab")]
     public TMP_Text buildingName;
     public Transform durabilityBar;
-    
+
     public TMP_Text description;
     [Header("Resources")]
     public TMP_Text ResourceEnergy;
     public TMP_Text ResourceFood;
     public TMP_Text ResourceMoney;
     public TMP_Text ResourceLaughs;
+    public TMP_Text NextEnergy;
+    public TMP_Text NextFood;
+    public TMP_Text NextMoney;
+    public TMP_Text NextLaughs;
 
     [Header("Upgrade")]
     public TMP_Text upgradeCost;
     public Button upgradeButton;
+    public GameObject NextEnergyArrowUp;
+    public GameObject NextFoodArrowUp;
+    public GameObject NextMoneyArrowUp;
+    public GameObject NextLaughsArrowUp;
+    public GameObject NextEnergyArrowDown;
+    public GameObject NextFoodArrowDown;
+    public GameObject NextMoneyArrowDown;
+    public GameObject NextLaughsArrowDown;
+    public Button Sell;
+
+
 
     public void DisplayInfo(BuildingSpace space)
     {
         if (space == null) return;
+        int MoneyDiff = space.getUpgradedValueOfType(ResourceType.Money)-space.getValueOfType(ResourceType.Money);
+        int FoodDiff = space.getUpgradedValueOfType(ResourceType.Food) - space.getValueOfType(ResourceType.Food);
+        int LaughsDiff = space.getUpgradedValueOfType(ResourceType.Laughs) - space.getValueOfType(ResourceType.Laughs);
+        int EnergyDiff = space.getUpgradedValueOfType(ResourceType.Energy) - space.getValueOfType(ResourceType.Energy);
+
 
         buildingTab.SetActive(space.isOccupied);
         infoTab.SetActive(!space.isOccupied);
 
         buildingName.text = space.buildingInfo.buildingName;
         description.text = space.buildingInfo.description;
-        ResourceMoney.text = space.getValueOfType(ResourceType.Money) + " Money";
+        ResourceMoney.text = "Money: " + space.getValueOfType(ResourceType.Money);
+        ResourceEnergy.text = "Energy: " + space.getValueOfType(ResourceType.Energy);
+        ResourceLaughs.text = "Laughs: " + space.getValueOfType(ResourceType.Laughs);
+        ResourceFood.text = "Food: " + space.getValueOfType(ResourceType.Food);
+        Sell.GetComponentInChildren<TMP_Text>().text = space.buildingInfo.sellValue;
+        NextEnergy.text = space.getUpgradedValueOfType(ResourceType.Energy);
+        NextMoney.text = space.getUpgradedValueOfType(ResourceType.Money);
+        NextLaughs.text = space.getUpgradedValueOfType(ResourceType.Laughs);
+        NextFood.text = space.getUpgradedValueOfType(ResourceType.Food);
+        
+        
+
+        //    ToDo: if (hasUpgrade == true)
+        {
+                  upgradeCost.text = space.buildingInfo.upgradeCost.ToString();
+              }
+              //     ToDo: if (hasUpgrade == false)
+              {
+                  upgradeButton.interactable = false;
+              }
+            NextEnergyArrowDown.SetActive(MoneyDiff < 0);
+            NextEnergyArrowUp.SetActive(MoneyDiff > 0);
+            NextEnergyArrowDown.SetActive(EnergyDiff < 0);
+            NextEnergyArrowUp.SetActive(EnergyDiff > 0);
+            NextEnergyArrowDown.SetActive(FoodDiff< 0);
+            NextEnergyArrowUp.SetActive(FoodDiff > 0);
+            NextEnergyArrowDown.SetActive(LaughsDiff < 0);
+            NextEnergyArrowUp.SetActive(LaughsDiff > 0);
+
+        //      ToDo: getUpgradedValueOfType(ResourceType type)
     }
+
 }
