@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
-  m_Name: New Building
+  m_Script: {fileID: 1137305049, guid: a4865f1ab4504ed8a368670db22f409c, type: 3}
+  m_Name: InspectorConfig
   m_EditorClassIdentifier: 
-  buildingName: 1
-  buildingPrefabs:
-  - {fileID: 154613428616480088, guid: e6c79ccd1df849143b536d03606e843a, type: 3}
-  initialBuildCost: 100
-  upgradeCost: 
+  enableOdinInInspector: 1
+  defaultEditorBehaviour: 11
+  processMouseMoveInInspector: 1
+  drawingConfig:
+    configs: []
