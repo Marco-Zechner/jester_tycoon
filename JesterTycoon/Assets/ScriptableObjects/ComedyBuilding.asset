@@ -20,7 +20,7 @@ MonoBehaviour:
     4 food
     per 10 seconds
 
-    
+
 
     Comedy buildings require:
 
@@ -28,7 +28,7 @@ MonoBehaviour:
 
     1 comedian
 
-    
+
 
     Comedy
     buildings give:
@@ -37,9 +37,9 @@ MonoBehaviour:
 
     10 laughs per second
 
-    10%
-    chance of triggering a choice dialog prompt every 2 minutes, increasing to 100%
-    every two minutes if your laughs are negative
+    10% chance
+    of triggering a choice dialog prompt every 2 minutes, increasing to 100% every
+    two minutes if your laughs are negative
 
 '
   constantResources:
