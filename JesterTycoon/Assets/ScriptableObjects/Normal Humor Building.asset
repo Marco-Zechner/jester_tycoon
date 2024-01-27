@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
-  m_Name: New Building 2
+  m_Name: Normal Humor Building
   m_EditorClassIdentifier: 
-  buildingName: 2
-  buildingPrefabs:
-  - {fileID: 2323535004440023916, guid: 483edb6eeddf93c4caccf90451b53122, type: 3}
-  initialBuildCost: 200
-  upgradeCost: 
+  buildingName: 
+  description: 
+  constantResources: []
+  stages: []
