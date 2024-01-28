@@ -46,15 +46,37 @@ public class UIManager : MonoBehaviour
     public GameObject NextLaughsArrowDown;
     public Button Sell;
 
+    public Button showBuildingTab;
+    public Button toggleBuildMode;
+
     [Header("UI Events")]
+    [HideInInspector]
     public UnityEvent OnUpgrade;
+    [HideInInspector]
     public UnityEvent OnSell;
-    public UnityEvent<SOBuilding> aktivebuilding;
+    public UnityEvent<bool> OnBuildModeChanged;
+    private bool buildMode = false;
 
     void Start()
     {
         Sell.onClick.AddListener(() => OnSell.Invoke());
-        upgradeButton.onClick.AddListener(() => OnUpgrade.Invoke());
+        upgradeButton.onClick.AddListener(() => {
+            OnUpgrade.Invoke();
+            DisplayInfo(currentSpace);
+        });
+        showBuildingTab.onClick.AddListener(() => {
+            buildingTab.SetActive(!buildingTab.activeSelf);
+            if (buildingTab.activeSelf)
+            {
+                OnBuildModeChanged.Invoke(false);
+                buildMode = false;
+                toggleBuildMode.interactable = false;
+            }
+        });
+        toggleBuildMode.onClick.AddListener(() => {
+            buildMode = !buildMode;
+            OnBuildModeChanged.Invoke(buildMode);
+        });
     }
 
     public void HideInfo()
@@ -62,33 +84,42 @@ public class UIManager : MonoBehaviour
         infoTab.SetActive(false);
     }
 
+    public void HideBuildingTab()
+    {
+        buildingTab.SetActive(false);
+        toggleBuildMode.interactable = true;
+    }
+
+    private PlaceInfo currentSpace;
+
     public void DisplayInfo(PlaceInfo space)
     {
-        if (space == null) return;
+        currentSpace = space;
+        if (currentSpace == null) return;
         infoTab.SetActive(true);
-        int MoneyDiff = space.GetUpgradedValueOfType(ResourceType.Money) - space.GetValueOfType(ResourceType.Money);
-        int FoodDiff = space.GetUpgradedValueOfType(ResourceType.Food) - space.GetValueOfType(ResourceType.Food);
-        int LaughsDiff = space.GetUpgradedValueOfType(ResourceType.Laughs) - space.GetValueOfType(ResourceType.Laughs);
-        int EnergyDiff = space.GetUpgradedValueOfType(ResourceType.Energy) - space.GetValueOfType(ResourceType.Energy);
+        int MoneyDiff = currentSpace.GetUpgradedValueOfType(ResourceType.Money) - currentSpace.GetValueOfType(ResourceType.Money);
+        int FoodDiff = currentSpace.GetUpgradedValueOfType(ResourceType.Food) - currentSpace.GetValueOfType(ResourceType.Food);
+        int LaughsDiff = currentSpace.GetUpgradedValueOfType(ResourceType.Laughs) - currentSpace.GetValueOfType(ResourceType.Laughs);
+        int EnergyDiff = currentSpace.GetUpgradedValueOfType(ResourceType.Energy) - currentSpace.GetValueOfType(ResourceType.Energy);
 
 
-        buildingName.text = space.buildingInfo.buildingName;
-        description.text = space.buildingInfo.description;
-        ResourceMoney.text = "Money: " + space.GetValueOfType(ResourceType.Money);
-        ResourceEnergy.text = "Energy: " + space.GetValueOfType(ResourceType.Energy);
-        ResourceLaughs.text = "Laughs: " + space.GetValueOfType(ResourceType.Laughs);
-        ResourceFood.text = "Food: " + space.GetValueOfType(ResourceType.Food);
-        Sell.GetComponentInChildren<TMP_Text>().text = space.SellValue().ToString();
-        NextEnergy.text = space.GetUpgradedValueOfType(ResourceType.Energy).ToString();
-        NextMoney.text = space.GetUpgradedValueOfType(ResourceType.Money).ToString();
-        NextLaughs.text = space.GetUpgradedValueOfType(ResourceType.Laughs).ToString();
-        NextFood.text = space.GetUpgradedValueOfType(ResourceType.Food).ToString();
+        buildingName.text = currentSpace.buildingInfo.buildingName;
+        description.text = currentSpace.buildingInfo.description;
+        ResourceMoney.text = "Money: " + currentSpace.GetValueOfType(ResourceType.Money);
+        ResourceEnergy.text = "Energy: " + currentSpace.GetValueOfType(ResourceType.Energy);
+        ResourceLaughs.text = "Laughs: " + currentSpace.GetValueOfType(ResourceType.Laughs);
+        ResourceFood.text = "Food: " + currentSpace.GetValueOfType(ResourceType.Food);
+        Sell.GetComponentInChildren<TMP_Text>().text = currentSpace.SellValue().ToString();
+        NextEnergy.text = currentSpace.GetUpgradedValueOfType(ResourceType.Energy).ToString();
+        NextMoney.text = currentSpace.GetUpgradedValueOfType(ResourceType.Money).ToString();
+        NextLaughs.text = currentSpace.GetUpgradedValueOfType(ResourceType.Laughs).ToString();
+        NextFood.text = currentSpace.GetUpgradedValueOfType(ResourceType.Food).ToString();
         
         
 
-        if (space.HasUpgrade())
+        if (currentSpace.HasUpgrade())
         {
-            int cost = space.UpgradeCost();
+            int cost = currentSpace.UpgradeCost();
 
             int leftOver = 0;
             if (GameManager.checkValue(GameManager.Value.Money, -cost, out leftOver))
@@ -100,7 +131,7 @@ public class UIManager : MonoBehaviour
                 upgradeButton.interactable = false;
             }
 
-            upgradeCost.text = space.UpgradeCost().ToString();
+            upgradeCost.text = currentSpace.UpgradeCost().ToString();
         }
         else
         {
@@ -126,6 +157,9 @@ public class UIManager : MonoBehaviour
     public void Setaktivebuilding(SOBuilding building)
     {
         aktivebuilding.Invoke(building);
+        HideBuildingTab();
+        OnBuildModeChanged.Invoke(true);
+        buildMode = true;
     }
 
 }

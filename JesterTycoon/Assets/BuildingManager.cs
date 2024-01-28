@@ -40,6 +40,8 @@ public class BuildingManager : MonoBehaviour
 
     private UIManager uiManager;
 
+    private bool buildModeActive = false;
+
     public List<PlaceInfo> GetAllPlaces()
     {
         List<PlaceInfo> places = new List<PlaceInfo>();
@@ -51,15 +53,8 @@ public class BuildingManager : MonoBehaviour
         return places;
     }
 
-    void OnEnable()
+    void Start()
     {
-        controls ??= new Controls();
-        controls.Enable();
-
-        UpdateMap();
-
-        SelectBuilding(currentBuildingIndex);
-
         
         if (uiManager == null)
         {
@@ -76,6 +71,17 @@ public class BuildingManager : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        controls ??= new Controls();
+        controls.Enable();
+
+        UpdateMap();
+
+        //SelectBuilding(currentBuildingIndex);
+
+    }
+
     void OnDisable()
     {
         controls.Disable();
@@ -86,8 +92,20 @@ public class BuildingManager : MonoBehaviour
         mapPlane.localScale = new Vector3(gameMapSize.x / 10, 1, gameMapSize.y / 10);
     }
 
+    public void SetBuildMode(bool buildMode)
+    {
+        buildModeActive = buildMode;
+    }
+
     private void Update() {
         if (currentGround == null) return;
+
+        if (buildModeActive == false)
+        {
+            currentBuildingPosition = new Vector3(0, -100, 0);
+            currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+            return;
+        }
 
         Ray ray = Camera.main.ScreenPointToRay(controls.placeMap.Position.ReadValue<Vector2>());
         RaycastHit hit;
@@ -97,10 +115,17 @@ public class BuildingManager : MonoBehaviour
             currentBuildingPosition.x = Mathf.Clamp(currentBuildingPosition.x, - gameMapSize.x / 2, gameMapSize.x / 2);
             currentBuildingPosition.z = Mathf.Clamp(currentBuildingPosition.z, -gameMapSize.y / 2, gameMapSize.y / 2);
         }
+        else
+        {
+            currentBuildingPosition = new Vector3(0, -100, 0);
+            currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+            return;
+        }
 
         currentBuildingRotation += controls.placeMap.Rotate.ReadValue<float>() * Time.deltaTime * rotationSpeed;
 
         currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+
 
         if (controls.placeMap.Place.triggered && collisionChecker.isOccupied == false)
         {
