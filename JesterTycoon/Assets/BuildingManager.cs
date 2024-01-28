@@ -183,7 +183,7 @@ public class BuildingManager : MonoBehaviour
         currentBuilding = Instantiate(selectedBuilding.stages[0].prefab);
         currentBuilding.transform.parent = currentGround.transform;
         currentBuilding.transform.localPosition = Vector3.zero;
-        currentBuilding.transform.localRotation = Quaternion.identity;
+        currentBuilding.transform.localRotation = Quaternion.Euler(-90,0,0);
 
         this.selectedBuilding = selectedBuilding;
     }
@@ -191,7 +191,7 @@ public class BuildingManager : MonoBehaviour
     public void PlaceBuilding()
     {
         var buildingGround = Instantiate(groundPrefab, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), ObjectHolder.transform);
-        Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), buildingGround.transform);        
+        Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(-90, currentBuildingRotation, 0), buildingGround.transform);        
 
         if(uiManager != null)
         {
