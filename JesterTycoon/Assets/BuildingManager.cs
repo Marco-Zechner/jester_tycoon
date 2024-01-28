@@ -41,6 +41,7 @@ public class BuildingManager : MonoBehaviour
     private UIManager uiManager;
 
     private bool buildModeActive = false;
+    public bool active2 = true;
 
     public List<PlaceInfo> GetAllPlaces()
     {
@@ -100,7 +101,7 @@ public class BuildingManager : MonoBehaviour
     private void Update() {
         if (currentGround == null) return;
 
-        if (buildModeActive == false)
+        if (buildModeActive == false ||active2 == false)
         {
             currentBuildingPosition = new Vector3(0, -100, 0);
             currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
@@ -166,7 +167,7 @@ public class BuildingManager : MonoBehaviour
     {
         if (uiManager == null)
         {
-            Debug.LogError("UIManager not found");
+            Debug.LogWarning("UIManager not found");
             return;
         }
 
@@ -202,6 +203,14 @@ public class BuildingManager : MonoBehaviour
             Debug.LogWarning("UIManager not found. This is a fallback system. Use new System instead with the UIManager");
             buildingGround.GetComponent<PlaceInfo>().buildingInfo = buildingSOs[currentBuildingIndex];
         }
+
+        int cost = buildingGround.GetComponent<PlaceInfo>().buildingInfo.stages[0].cost.amount;
+        if (GameManager.GetValue(GameManager.Value.Money) < cost)
+        {
+            Destroy(buildingGround);
+            return;
+        }
+        GameManager.AddValue(GameManager.Value.Money, -cost);
 
         buildings.Add(buildingGround);
         ConnectClosest(buildingGround);

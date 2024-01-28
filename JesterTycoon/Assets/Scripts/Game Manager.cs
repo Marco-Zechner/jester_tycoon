@@ -17,7 +17,7 @@ public static class GameManager
         Values.Add(Value.Visitors, 0);
         if (PopUpHandler.instance == null)
         {
-            Debug.LogError("PopUpHandler is not in the scene");
+            Debug.LogWarning("PopUpHandler is not in the scene");
         }
         else
         {
