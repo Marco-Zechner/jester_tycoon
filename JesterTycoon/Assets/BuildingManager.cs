@@ -38,6 +38,10 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
+    private UIManager uiManager;
+
+    private bool buildModeActive = false;
+
     public List<PlaceInfo> GetAllPlaces()
     {
         List<PlaceInfo> places = new List<PlaceInfo>();
@@ -49,6 +53,24 @@ public class BuildingManager : MonoBehaviour
         return places;
     }
 
+    void Start()
+    {
+        
+        if (uiManager == null)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+        }
+
+        if (uiManager != null)
+        {
+            uiManager.aktivebuilding.AddListener(OnSelectBuilding);
+        }
+        else
+        {
+            Debug.LogWarning("UIManager not found. This is a fallback system. Use new System instead with the UIManager");
+        }
+    }
+
     void OnEnable()
     {
         controls ??= new Controls();
@@ -56,7 +78,8 @@ public class BuildingManager : MonoBehaviour
 
         UpdateMap();
 
-        SelectBuilding(currentBuildingIndex);
+        //SelectBuilding(currentBuildingIndex);
+
     }
 
     void OnDisable()
@@ -69,8 +92,20 @@ public class BuildingManager : MonoBehaviour
         mapPlane.localScale = new Vector3(gameMapSize.x / 10, 1, gameMapSize.y / 10);
     }
 
+    public void SetBuildMode(bool buildMode)
+    {
+        buildModeActive = buildMode;
+    }
+
     private void Update() {
         if (currentGround == null) return;
+
+        if (buildModeActive == false)
+        {
+            currentBuildingPosition = new Vector3(0, -100, 0);
+            currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+            return;
+        }
 
         Ray ray = Camera.main.ScreenPointToRay(controls.placeMap.Position.ReadValue<Vector2>());
         RaycastHit hit;
@@ -80,10 +115,17 @@ public class BuildingManager : MonoBehaviour
             currentBuildingPosition.x = Mathf.Clamp(currentBuildingPosition.x, - gameMapSize.x / 2, gameMapSize.x / 2);
             currentBuildingPosition.z = Mathf.Clamp(currentBuildingPosition.z, -gameMapSize.y / 2, gameMapSize.y / 2);
         }
+        else
+        {
+            currentBuildingPosition = new Vector3(0, -100, 0);
+            currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+            return;
+        }
 
         currentBuildingRotation += controls.placeMap.Rotate.ReadValue<float>() * Time.deltaTime * rotationSpeed;
 
         currentGround.transform.SetPositionAndRotation(currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0));
+
 
         if (controls.placeMap.Place.triggered && collisionChecker.isOccupied == false)
         {
@@ -94,6 +136,13 @@ public class BuildingManager : MonoBehaviour
     [Button]
     public void SelectBuilding(int index)
     {
+        if (uiManager != null)
+        {
+            Debug.LogWarning("UIManager found. Use new System instead");
+            return;
+        }
+        Debug.LogWarning("UIManager not found. This is a fallback system. Use new System instead with the UIManager");
+
         if (currentGround == null)
         {
             currentGround = Instantiate(groundPrefab, transform);
@@ -111,12 +160,48 @@ public class BuildingManager : MonoBehaviour
 
     }
 
+    private SOBuilding selectedBuilding;
+
+    public void OnSelectBuilding(SOBuilding selectedBuilding)
+    {
+        if (uiManager == null)
+        {
+            Debug.LogError("UIManager not found");
+            return;
+        }
+
+        if (currentGround == null)
+        {
+            currentGround = Instantiate(groundPrefab, transform);
+            collisionChecker = currentGround.GetComponentInChildren<PlaceCollisionChecker>();
+            collisionChecker.gameObject.AddComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        currentBuildingIndex = -1;
+        if (currentBuilding != null)
+            Destroy(currentBuilding);
+        currentBuilding = Instantiate(selectedBuilding.stages[0].prefab);
+        currentBuilding.transform.parent = currentGround.transform;
+        currentBuilding.transform.localPosition = Vector3.zero;
+        currentBuilding.transform.localRotation = Quaternion.identity;
+
+        this.selectedBuilding = selectedBuilding;
+    }
+
     public void PlaceBuilding()
     {
         var buildingGround = Instantiate(groundPrefab, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), ObjectHolder.transform);
         Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), buildingGround.transform);        
 
-        buildingGround.GetComponent<PlaceInfo>().buildingInfo = buildingSOs[currentBuildingIndex];
+        if(uiManager != null)
+        {
+            buildingGround.GetComponent<PlaceInfo>().buildingInfo = selectedBuilding;
+        }
+        else
+        {
+            Debug.LogWarning("UIManager not found. This is a fallback system. Use new System instead with the UIManager");
+            buildingGround.GetComponent<PlaceInfo>().buildingInfo = buildingSOs[currentBuildingIndex];
+        }
 
         buildings.Add(buildingGround);
         ConnectClosest(buildingGround);

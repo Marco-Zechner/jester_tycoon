@@ -6,7 +6,7 @@ public class PlaceCollisionChecker : MonoBehaviour
 {
     public bool isOccupied = false;
 
-    List<Collider> collisions = new List<Collider>();
+    public List<Collider> collisions = new List<Collider>();
 
     void OnCollisionEnter(Collision other)
     {
