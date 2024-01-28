@@ -18,7 +18,9 @@ public class SOBuilding : ScriptableObject
 
 [System.Serializable]
 public class Stage {
+    public Resource unlockCost;
     public Resource cost;
+    public int maxVisitors;
     public GameObject prefab;
     [Header("Resources")]
     public DependentResource[] resources;

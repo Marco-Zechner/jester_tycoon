@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
     public GameObject infoTab;
 
     [Header("UI Elements - Building Tab")]
-    public TMP_Text placeDescription;
     public List<SOBuilding> availableBuildings;
     public GameObject ListElementPrefab;
     public Transform ListElementParent;
@@ -47,7 +46,7 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void DisplayInfo(BuildingSpace space)
+    public void DisplayInfo(PlaceInfo space)
     {
         if (space == null) return;
         int MoneyDiff = space.getUpgradedValueOfType(ResourceType.Money) - space.getValueOfType(ResourceType.Money);
@@ -55,9 +54,6 @@ public class UIManager : MonoBehaviour
         int LaughsDiff = space.getUpgradedValueOfType(ResourceType.Laughs) - space.getValueOfType(ResourceType.Laughs);
         int EnergyDiff = space.getUpgradedValueOfType(ResourceType.Energy) - space.getValueOfType(ResourceType.Energy);
 
-
-        buildingTab.SetActive(!space.isOccupied);
-        infoTab.SetActive(space.isOccupied);
 
         buildingName.text = space.buildingInfo.buildingName;
         description.text = space.buildingInfo.description;
@@ -75,7 +71,19 @@ public class UIManager : MonoBehaviour
 
         if (space.hasUpgrade())
         {
-            upgradeCost.text = space.buildingInfo.upgradeCost.ToString();
+            int cost = space.UpgradeCost();
+
+            int leftOver = 0;
+            if (GameManager.checkValue(GameManager.Value.Money, -cost, out leftOver))
+            {
+                upgradeButton.interactable = true;
+            }
+            else
+            {
+                upgradeButton.interactable = false;
+            }
+
+            upgradeCost.text = space.UpgradeCost().ToString();
         }
         else
         {

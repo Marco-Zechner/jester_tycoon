@@ -23,4 +23,16 @@ MonoBehaviour:
       type: 0
       amount: 0
     prefab: {fileID: 0}
-    resources: []
+    resources:
+    - type: 0
+      amount: 1000
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 20
+      perVisitor: 1
+    - type: 2
+      amount: 20
+      usageType: 1
+      VisitorDependent: 1
+      perSecond: 1
+      perVisitor: 1

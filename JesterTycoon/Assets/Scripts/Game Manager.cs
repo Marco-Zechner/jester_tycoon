@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class GameManager
 {
-    enum Value { Money, Laughs, Food, Power, Visitors };
+    public enum Value { Money, Laughs, Food, Power, Visitors };
     static Dictionary<Value,int> Values = new Dictionary<Value, int>();
 
     public static void start(int money,int MultieplierConserionRate,float PopUpDelay,MonoBehaviour Mono)
@@ -18,7 +18,7 @@ public static class GameManager
         Mono.StartCoroutine(EventPrompt(PopUpDelay,Mono));
     }
 
-    static bool checkValue(Value valueType, int offset,out int ReturnAmount)
+    public static bool checkValue(Value valueType, int offset,out int ReturnAmount)
     {
         int valuetocheck = Values[valueType];
 

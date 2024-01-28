@@ -14,6 +14,8 @@ public class BuildingSelector : MonoBehaviour
     [SerializeField]
     private LayerMask buildingLayer;
 
+    private UIManager uiManager;
+
     void OnEnable()
     {
         controls ??= new Controls();
@@ -45,12 +47,15 @@ public class BuildingSelector : MonoBehaviour
 
         if (info.childPlaces.Count == 0)
         {
-            //Remove building
-            if (info.parentPlace != null)
+            if (uiManager == null)
             {
-                info.parentPlace.childPlaces.Remove(info);
+                uiManager = FindObjectOfType<UIManager>();
             }
-            Destroy(info.gameObject);
+
+            if (uiManager != null)
+            {
+                uiManager.DisplayInfo(info);
+            }
         }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47cbd7149b8bb5049af4b4ee5d098e77, type: 3}
   m_Name: Dark Humor
   m_EditorClassIdentifier: 
-  buildingName: 2
+  buildingName: Dark Humor
   description: This circus tent is whimsical. It is a place where joy is mixed with
     dark humour, and each act parodies the very notion of entertainment. The comedy
     is as sharp as the tent's peaks.
@@ -20,6 +20,49 @@ MonoBehaviour:
   stages:
   - cost:
       type: 0
-      amount: 0
+      amount: 200
+    maxVisitors: 15
     prefab: {fileID: 8246878225529202956, guid: 293c37fbfda859d43b98ce593cd14058, type: 3}
-    resources: []
+    resources:
+    - type: 0
+      amount: 10
+      usageType: 1
+      VisitorDependent: 1
+      perSecond: 1
+      perVisitor: 10
+    - type: 0
+      amount: 5
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 5
+      perVisitor: 15
+    - type: 1
+      amount: 20
+      usageType: 1
+      VisitorDependent: 1
+      perSecond: 1
+      perVisitor: 1
+  - cost:
+      type: 0
+      amount: 400
+    maxVisitors: 30
+    prefab: {fileID: 5205682836096330557, guid: cd4232b59987e3d4a90880c7e12020ec, type: 3}
+    resources:
+    - type: 0
+      amount: 20
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 3
+      amount: 5
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 50
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1

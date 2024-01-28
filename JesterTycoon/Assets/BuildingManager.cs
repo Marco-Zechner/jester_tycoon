@@ -105,6 +105,7 @@ public class BuildingManager : MonoBehaviour
         var buildingGround = Instantiate(groundPrefab, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), ObjectHolder.transform);
         Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), buildingGround.transform);        
 
+        buildingGround.GetComponent<PlaceInfo>().buildingInfo = buildingSOs[currentBuildingIndex];
 
         buildings.Add(buildingGround);
         ConnectClosest(buildingGround);
