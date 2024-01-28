@@ -70,6 +70,7 @@ public class BuildingSelector : MonoBehaviour
             {
                 selectedPlaceInfo.parentPlace.childPlaces.Remove(selectedPlaceInfo);
             }
+            GameManager.AddValue(GameManager.Value.Money, selectedPlaceInfo.SellValue());
             Destroy(selectedPlaceInfo.gameObject);
             uiManager.HideInfo();
         });

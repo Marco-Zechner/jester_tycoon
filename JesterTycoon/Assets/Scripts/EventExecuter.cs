@@ -10,7 +10,7 @@ public class EventExecuter : MonoBehaviour
     [SerializeField] int money;
     [SerializeField] int Multiplier;
     [SerializeField] int PopupDelay;
-    void Start(){ GameManager.start(1000, 0, 10, this); }
+    void Start(){ GameManager.start(money, 0, 10, this); }
 
     [Button]
     private void ChangeValue(GameManager.Value valueType, int offset)

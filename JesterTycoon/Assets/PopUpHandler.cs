@@ -40,8 +40,8 @@ public class PopUpHandler : MonoBehaviour
         popUpAnswer.Update(popup,false);
         popUpAnswer.PopUpObject.SetActive(true);
         transform.GetChild(0).gameObject.SetActive(true);
-        GameManager.checkValue(popup.Value, popup.amount,out int returnamount);
-        Debug.Log(popup.Value + returnamount+"/"+popup.amount);
+        GameManager.AddValue(popup.Value, popup.amount);
+        // Debug.Log(popup.Value + returnamount+"/"+popup.amount);
     }
 }
 public struct PopUpUI

@@ -121,8 +121,8 @@ public class UIManager : MonoBehaviour
         {
             int cost = currentSpace.UpgradeCost();
 
-            int leftOver = 0;
-            if (GameManager.checkValue(GameManager.Value.Money, -cost, out leftOver))
+            int money = GameManager.GetValue(GameManager.Value.Money);
+            if (money > cost)
             {
                 upgradeButton.interactable = true;
             }
