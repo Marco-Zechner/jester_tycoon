@@ -38,6 +38,17 @@ public class BuildingManager : MonoBehaviour
     [SerializeField]
     private LayerMask groundLayer;
 
+    public List<PlaceInfo> GetAllPlaces()
+    {
+        List<PlaceInfo> places = new List<PlaceInfo>();
+        foreach (var building in buildings)
+        {
+            if (building == null) continue;
+            places.Add(building.GetComponent<PlaceInfo>());
+        }
+        return places;
+    }
+
     void OnEnable()
     {
         controls ??= new Controls();

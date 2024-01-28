@@ -6,7 +6,7 @@ using UnityEngine;
 public static class GameManager
 {
     public enum Value { Money, Laughs, Food, Power, Visitors };
-    static Dictionary<Value,int> Values = new Dictionary<Value, int>();
+    public static Dictionary<Value,int> Values = new Dictionary<Value, int>();
 
     public static void start(int money,int MultieplierConserionRate,float PopUpDelay,MonoBehaviour Mono)
     {
@@ -15,7 +15,14 @@ public static class GameManager
         Values.Add(Value.Food, 0);
         Values.Add(Value.Power, 0);
         Values.Add(Value.Visitors, 0);
-        Mono.StartCoroutine(EventPrompt(PopUpDelay,Mono));
+        if (PopUpHandler.instance == null)
+        {
+            Debug.LogError("PopUpHandler is not in the scene");
+        }
+        else
+        {
+            Mono.StartCoroutine(EventPrompt(PopUpDelay,Mono));  
+        }
     }
 
     public static bool checkValue(Value valueType, int offset,out int ReturnAmount)

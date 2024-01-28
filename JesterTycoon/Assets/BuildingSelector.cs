@@ -45,17 +45,15 @@ public class BuildingSelector : MonoBehaviour
     {
         var info = hit.collider.GetComponentInParent<PlaceInfo>();
 
-        if (info.childPlaces.Count == 0)
+        if (uiManager == null)
         {
-            if (uiManager == null)
-            {
-                uiManager = FindObjectOfType<UIManager>();
-            }
+            uiManager = FindObjectOfType<UIManager>();
+        }
 
-            if (uiManager != null)
-            {
-                uiManager.DisplayInfo(info);
-            }
+        if (uiManager != null)
+        {
+            uiManager.DisplayInfo(info);
+            uiManager.SetSellButton(info.childPlaces.Count == 0);
         }
     }
 }

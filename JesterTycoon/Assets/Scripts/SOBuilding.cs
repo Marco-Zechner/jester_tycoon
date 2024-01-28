@@ -21,6 +21,7 @@ public class Stage {
     public Resource unlockCost;
     public Resource cost;
     public int maxVisitors;
+    public int effectRadius;
     public GameObject prefab;
     [Header("Resources")]
     public DependentResource[] resources;
