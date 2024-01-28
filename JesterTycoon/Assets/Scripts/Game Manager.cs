@@ -42,7 +42,7 @@ public static class GameManager
     static IEnumerator EventPrompt(float delay,MonoBehaviour mono)
     {
         yield return new WaitForSeconds(delay);
-        PopUpHandler.instance.ShowPopUp();
+        PopUpHandler.instance.ShowQuestionPopUp();
 
         mono.StartCoroutine(EventPrompt(delay,mono));
     }
