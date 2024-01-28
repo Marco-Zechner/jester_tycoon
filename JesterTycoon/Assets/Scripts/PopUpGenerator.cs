@@ -61,43 +61,7 @@ public class PopUpGenerator : MonoBehaviour
 
     }
 
-    //int pageindex;
-
-        // this sets the start point 
-
-        /*
-        PopUp page = Popups.ToList()[30].Value; ;
-
-        while (true)
-        {
-            Console.Clear();
-            List<string> nextTitle = new List<string>();
-            Console.WriteLine(page.story);
-
-            for (int i = 0; i < page.Answer.Count; i++)
-            {
-                nextTitle.Add(page.Answer[i]);
-                Console.WriteLine("[" + i + "] " + page.Answer[i]);
-            }
-
-            while (true)
-            {
-                string response = Console.ReadLine();
-
-                if (int.TryParse(response, out pageindex))
-                {
-                    if (pageindex > nextTitle.Count)
-                    {
-                        Console.WriteLine("input is bigger then the options count");
-                        continue;
-                    }
-                    page = Popups[nextTitle[pageindex]];
-                    break;
-                }
-            }
-
-        }
-        */
+    
 
     }
 }

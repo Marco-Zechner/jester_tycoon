@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
 
     [Header("UI Elements - Building Tab")]
     public List<SOBuilding> availableBuildings;
+    public UnityEvent<SOBuilding> aktivebuilding;
     public GameObject ListElementPrefab;
     public Transform ListElementParent;
 
@@ -113,6 +114,11 @@ public class UIManager : MonoBehaviour
     public void SetSellButton(bool active)
     {
         Sell.interactable = active;
+    }
+
+    public void Setaktivebuilding(SOBuilding building)
+    {
+        aktivebuilding.Invoke(building);
     }
 
 }
