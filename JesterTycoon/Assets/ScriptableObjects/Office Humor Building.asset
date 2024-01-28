@@ -18,8 +18,42 @@ MonoBehaviour:
     Here, every floor tells its own story of corporate quirks and keyboard warriors.
   constantResources: []
   stages:
-  - cost:
+  - unlockCost:
+      type: 1
+      amount: 150
+    cost:
       type: 0
-      amount: 0
+      amount: 300
+    maxVisitors: 6
     prefab: {fileID: 5205682836096330557, guid: cd4232b59987e3d4a90880c7e12020ec, type: 3}
-    resources: []
+    resources:
+    - type: 0
+      amount: 15
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 2
+      amount: 4
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 3
+      amount: 4
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 20
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1

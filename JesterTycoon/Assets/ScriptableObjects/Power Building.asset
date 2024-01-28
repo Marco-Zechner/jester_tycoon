@@ -19,13 +19,17 @@ MonoBehaviour:
     to the operation inside. Responsible for keeping the lights on.
   constantResources: []
   stages:
-  - cost:
+  - unlockCost:
       type: 0
       amount: 0
+    cost:
+      type: 0
+      amount: 100
+    maxVisitors: 0
     prefab: {fileID: 0}
     resources:
     - type: 0
-      amount: 1000
+      amount: 5
       usageType: 0
       VisitorDependent: 0
       perSecond: 20
@@ -35,4 +39,22 @@ MonoBehaviour:
       usageType: 1
       VisitorDependent: 1
       perSecond: 1
+      perVisitor: 1
+    - type: 3
+      amount: 60
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 1
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
       perVisitor: 1

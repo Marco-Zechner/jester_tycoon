@@ -18,35 +18,53 @@ MonoBehaviour:
     is as sharp as the tent's peaks.
   constantResources: []
   stages:
-  - cost:
+  - unlockCost:
+      type: 1
+      amount: 600
+    cost:
       type: 0
-      amount: 200
+      amount: 500
     maxVisitors: 15
     prefab: {fileID: 8246878225529202956, guid: 293c37fbfda859d43b98ce593cd14058, type: 3}
     resources:
     - type: 0
-      amount: 10
+      amount: 25
       usageType: 1
-      VisitorDependent: 1
-      perSecond: 1
+      VisitorDependent: 0
+      perSecond: 10
       perVisitor: 10
-    - type: 0
-      amount: 5
+    - type: 2
+      amount: 6
       usageType: 0
       VisitorDependent: 0
-      perSecond: 5
+      perSecond: 10
       perVisitor: 15
-    - type: 1
-      amount: 20
-      usageType: 1
-      VisitorDependent: 1
+    - type: 3
+      amount: 6
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
       perSecond: 1
       perVisitor: 1
-  - cost:
+    - type: 1
+      amount: 50
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+  - unlockCost:
+      type: 0
+      amount: 0
+    cost:
       type: 0
       amount: 400
     maxVisitors: 30
-    prefab: {fileID: 5205682836096330557, guid: cd4232b59987e3d4a90880c7e12020ec, type: 3}
+    prefab: {fileID: 8246878225529202956, guid: 293c37fbfda859d43b98ce593cd14058, type: 3}
     resources:
     - type: 0
       amount: 20
@@ -61,7 +79,19 @@ MonoBehaviour:
       perSecond: 1
       perVisitor: 1
     - type: 1
-      amount: 50
+      amount: 40
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 2
+      amount: 0
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 0
+      amount: 0
       usageType: 0
       VisitorDependent: 0
       perSecond: 1
