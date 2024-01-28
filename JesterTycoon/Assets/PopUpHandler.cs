@@ -14,7 +14,6 @@ public class PopUpHandler : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("hello World");
         instance = this;
         popUpGenerator = GetComponent<PopUpGenerator>();
         popUpAnswer = new PopUpUI(transform.GetChild(0).GetChild(0));
@@ -27,7 +26,6 @@ public class PopUpHandler : MonoBehaviour
     }
     public void ShowQuestionPopUp()
     {
-
         Time.timeScale = 0;
         popUpQuestion.Update( popUpGenerator.Questions[Random.Range(0,popUpGenerator.Questions.Count)],true);
         popUpQuestion.PopUpObject.SetActive(true);
@@ -35,7 +33,6 @@ public class PopUpHandler : MonoBehaviour
     }
     public void ShowAnswerPopUp(TextMeshProUGUI text)
     {
-
         Time.timeScale = 0;
         PopUp popup = popUpGenerator.Answer[text.text];
         popUpAnswer.Update(popup,false);

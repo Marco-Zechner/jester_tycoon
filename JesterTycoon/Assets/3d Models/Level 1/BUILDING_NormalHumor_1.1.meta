@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 23f3509340554284b91a1c2568164537
+=======
+<<<<<<<< Updated upstream:JesterTycoon/Assets/3d Models/Level 1.meta
+guid: f22ee5bbdf8f23643b27d8a4a41d08be
+========
+guid: 6b577b2916e311a478a10f3ff179d698
+>>>>>>>> Stashed changes:JesterTycoon/Assets/3d Models/Level 1/BUILDING_NormalHumor_1.1.meta
+>>>>>>> Stashed changes
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
