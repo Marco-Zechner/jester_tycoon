@@ -30,7 +30,7 @@ public class PopUpHandler : MonoBehaviour
         popUpQuestion.Update( popUpGenerator.Questions[Random.Range(0,popUpGenerator.Questions.Count)],true);
         popUpQuestion.PopUpObject.SetActive(true);
         transform.GetChild(0).gameObject.SetActive(true);
-        Sprite sp = Resources.Load<Sprite>(Random.Range(1,5).ToString());
+        Sprite sp = Resources.Load<Sprite>(Random.Range(1,6).ToString());
         transform.GetChild(0).GetChild(2).GetComponent<Image>().sprite = sp;
     }
     public void ShowAnswerPopUp(TextMeshProUGUI text)
