@@ -11,6 +11,105 @@ public class PlaceInfo : MonoBehaviour{
     public int currentVisitors = 0;
     public int currentStage = 0;
 
+    Dictionary<ResourceType, PlaceInfo> providers = new Dictionary<ResourceType, PlaceInfo>();
+    Dictionary<ResourceType, List<PlaceInfo>> consumers = new Dictionary<ResourceType, List<PlaceInfo>>();
+
+    public void GetProviders()
+    {
+        foreach (var consumer in consumers)
+        {
+            foreach (var place in consumer.Value)
+            {
+                place.GetProviders();
+            }
+        }
+
+        foreach (var provider in providers)
+        {
+            provider.Value.consumers[provider.Key].Remove(this);
+        }
+
+        providers.Clear();
+        consumers.Clear();
+        int food = GetValueOfType(ResourceType.Food);
+        if (food > 0)
+        {
+            consumers.Add(ResourceType.Food, null);
+        }
+        if (food < 0)
+        {
+            providers.Add(ResourceType.Food, null);
+        }
+
+        int energy = GetValueOfType(ResourceType.Energy);
+        if (energy > 0)
+        {
+            consumers.Add(ResourceType.Energy, null);
+        }
+        if (energy < 0)
+        {
+            providers.Add(ResourceType.Energy, null);
+        }
+
+        int staff = GetValueOfType(ResourceType.Staff);
+        if (staff > 0)
+        {
+            consumers.Add(ResourceType.Staff, null);
+        }
+        if (staff < 0)
+        {
+            providers.Add(ResourceType.Staff, null);
+        }
+
+        List<PlaceInfo> possibleProviders = GetAllInRange();
+
+        foreach (var requiredResource in providers)
+        {
+            PlaceInfo provider = null;
+
+            foreach (PlaceInfo possibleProvider in possibleProviders)
+            {
+                if (possibleProvider.consumers.ContainsKey(requiredResource.Key))
+                {
+                    provider = possibleProvider;
+                    break;
+                }
+            }
+
+            if (provider == null)
+            {
+                Debug.LogError("No provider found for " + requiredResource.Key);
+            }
+            else
+            {
+                providers[requiredResource.Key] = provider;
+                provider.consumers[requiredResource.Key].Add(this);
+            }
+        }
+    }
+
+    private List<PlaceInfo> GetAllInRange()
+    {
+        BuildingManager buildingManager = FindObjectOfType<BuildingManager>();
+        List<PlaceInfo> places = buildingManager.GetAllPlaces();
+
+        List<PlaceInfo> placesInRange = new List<PlaceInfo>();
+
+        foreach (PlaceInfo place in places)
+        {
+            if (place == this) continue;
+            if (Vector3.Distance(place.transform.position, transform.position) <= place.buildingInfo.stages[place.currentStage].effectRadius)
+            {
+                placesInRange.Add(place);
+            }
+        }
+
+        placesInRange.Sort((x, y) => Vector3.Distance(x.transform.position, transform.position).CompareTo(Vector3.Distance(y.transform.position, transform.position)));
+
+        return placesInRange;
+    }
+
+
     [Button]
     public int SpreadVisitors(int visitors)
     {
@@ -44,7 +143,7 @@ public class PlaceInfo : MonoBehaviour{
         }
     }
 
-    public bool hasUpgrade()
+    public bool HasUpgrade()
     {
         return buildingInfo.stages.Length > currentStage + 1;
     }
@@ -54,21 +153,21 @@ public class PlaceInfo : MonoBehaviour{
         return buildingInfo.stages[currentStage + 1].cost.amount;
     }
 
-    public int getUpgradedValueOfType(ResourceType type)
+    public int GetUpgradedValueOfType(ResourceType type)
     {
-        return getValueOfTypeStage(type, currentStage + 1);
+        return GetValueOfTypeStage(type, currentStage + 1);
     }
-    public int sellValue()
+    public int SellValue()
     {
         return buildingInfo.stages[currentStage].cost.amount;
     }
 
-    public int getValueOfType(ResourceType type)
+    public int GetValueOfType(ResourceType type)
     {
-        return getValueOfTypeStage(type, currentStage);
+        return GetValueOfTypeStage(type, currentStage);
     }
 
-    private int getValueOfTypeStage(ResourceType type, int currentStage)
+    private int GetValueOfTypeStage(ResourceType type, int currentStage)
     {
         int sum = 0;
 
@@ -78,7 +177,15 @@ public class PlaceInfo : MonoBehaviour{
             {
                 if (resource.type == type)
                 {
-                    sum += resource.amount;
+                    switch (resource.usageType)
+                    {
+                        case UsageType.Produces:
+                        sum += resource.amount;
+                        break;
+                        case UsageType.Consumes:
+                        sum -= resource.amount;
+                        break;
+                    }
                 }
             }
         }
@@ -89,7 +196,15 @@ public class PlaceInfo : MonoBehaviour{
             {
                 if (resource.type == type)
                 {
-                    sum += resource.amount;
+                    switch (resource.usageType)
+                    {
+                        case UsageType.Produces:
+                        sum += resource.amount;
+                        break;
+                        case UsageType.Consumes:
+                        sum -= resource.amount;
+                        break;
+                    }
                 }
             }
         }

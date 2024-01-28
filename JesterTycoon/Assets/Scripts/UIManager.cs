@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -44,32 +45,40 @@ public class UIManager : MonoBehaviour
     public GameObject NextLaughsArrowDown;
     public Button Sell;
 
+    [Header("UI Events")]
+    public UnityEvent OnUpgrade;
+    public UnityEvent OnSell;
 
+    void Start()
+    {
+        Sell.onClick.AddListener(() => OnSell.Invoke());
+        upgradeButton.onClick.AddListener(() => OnUpgrade.Invoke());
+    }
 
     public void DisplayInfo(PlaceInfo space)
     {
         if (space == null) return;
-        int MoneyDiff = space.getUpgradedValueOfType(ResourceType.Money) - space.getValueOfType(ResourceType.Money);
-        int FoodDiff = space.getUpgradedValueOfType(ResourceType.Food) - space.getValueOfType(ResourceType.Food);
-        int LaughsDiff = space.getUpgradedValueOfType(ResourceType.Laughs) - space.getValueOfType(ResourceType.Laughs);
-        int EnergyDiff = space.getUpgradedValueOfType(ResourceType.Energy) - space.getValueOfType(ResourceType.Energy);
+        int MoneyDiff = space.GetUpgradedValueOfType(ResourceType.Money) - space.GetValueOfType(ResourceType.Money);
+        int FoodDiff = space.GetUpgradedValueOfType(ResourceType.Food) - space.GetValueOfType(ResourceType.Food);
+        int LaughsDiff = space.GetUpgradedValueOfType(ResourceType.Laughs) - space.GetValueOfType(ResourceType.Laughs);
+        int EnergyDiff = space.GetUpgradedValueOfType(ResourceType.Energy) - space.GetValueOfType(ResourceType.Energy);
 
 
         buildingName.text = space.buildingInfo.buildingName;
         description.text = space.buildingInfo.description;
-        ResourceMoney.text = "Money: " + space.getValueOfType(ResourceType.Money);
-        ResourceEnergy.text = "Energy: " + space.getValueOfType(ResourceType.Energy);
-        ResourceLaughs.text = "Laughs: " + space.getValueOfType(ResourceType.Laughs);
-        ResourceFood.text = "Food: " + space.getValueOfType(ResourceType.Food);
-        Sell.GetComponentInChildren<TMP_Text>().text = space.sellValue().ToString();
-        NextEnergy.text = space.getUpgradedValueOfType(ResourceType.Energy).ToString();
-        NextMoney.text = space.getUpgradedValueOfType(ResourceType.Money).ToString();
-        NextLaughs.text = space.getUpgradedValueOfType(ResourceType.Laughs).ToString();
-        NextFood.text = space.getUpgradedValueOfType(ResourceType.Food).ToString();
+        ResourceMoney.text = "Money: " + space.GetValueOfType(ResourceType.Money);
+        ResourceEnergy.text = "Energy: " + space.GetValueOfType(ResourceType.Energy);
+        ResourceLaughs.text = "Laughs: " + space.GetValueOfType(ResourceType.Laughs);
+        ResourceFood.text = "Food: " + space.GetValueOfType(ResourceType.Food);
+        Sell.GetComponentInChildren<TMP_Text>().text = space.SellValue().ToString();
+        NextEnergy.text = space.GetUpgradedValueOfType(ResourceType.Energy).ToString();
+        NextMoney.text = space.GetUpgradedValueOfType(ResourceType.Money).ToString();
+        NextLaughs.text = space.GetUpgradedValueOfType(ResourceType.Laughs).ToString();
+        NextFood.text = space.GetUpgradedValueOfType(ResourceType.Food).ToString();
         
         
 
-        if (space.hasUpgrade())
+        if (space.HasUpgrade())
         {
             int cost = space.UpgradeCost();
 
@@ -99,6 +108,11 @@ public class UIManager : MonoBehaviour
         NextFoodArrowUp.SetActive(FoodDiff > 0);
         NextLaughsArrowDown.SetActive(LaughsDiff < 0);
         NextLaughsArrowUp.SetActive(LaughsDiff > 0);
+    }
+
+    public void SetSellButton(bool active)
+    {
+        Sell.interactable = active;
     }
 
 }
