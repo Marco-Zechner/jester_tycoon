@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
     [Header("UI Events")]
     public UnityEvent OnUpgrade;
     public UnityEvent OnSell;
+    public UnityEvent<SOBuilding> aktivebuilding;
 
     void Start()
     {
@@ -56,9 +57,15 @@ public class UIManager : MonoBehaviour
         upgradeButton.onClick.AddListener(() => OnUpgrade.Invoke());
     }
 
+    public void HideInfo()
+    {
+        infoTab.SetActive(false);
+    }
+
     public void DisplayInfo(PlaceInfo space)
     {
         if (space == null) return;
+        infoTab.SetActive(true);
         int MoneyDiff = space.GetUpgradedValueOfType(ResourceType.Money) - space.GetValueOfType(ResourceType.Money);
         int FoodDiff = space.GetUpgradedValueOfType(ResourceType.Food) - space.GetValueOfType(ResourceType.Food);
         int LaughsDiff = space.GetUpgradedValueOfType(ResourceType.Laughs) - space.GetValueOfType(ResourceType.Laughs);

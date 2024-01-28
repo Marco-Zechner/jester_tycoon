@@ -16,6 +16,8 @@ public class BuildingSelector : MonoBehaviour
 
     private UIManager uiManager;
 
+    private PlaceInfo selectedPlaceInfo;
+
     void OnEnable()
     {
         controls ??= new Controls();
@@ -32,6 +34,17 @@ public class BuildingSelector : MonoBehaviour
 
     public void Select(Vector2 screenPosition)
     {
+        if (uiManager == null)
+        {
+            uiManager = FindObjectOfType<UIManager>();
+        }
+
+        if (uiManager == null)
+        {
+            Debug.LogError("UIManager not found");
+            return;
+        }
+
         Ray ray = playerCamera.ScreenPointToRay(screenPosition);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, maxRaycastDistance, buildingLayer))
@@ -44,16 +57,21 @@ public class BuildingSelector : MonoBehaviour
     public void ValidSelection(RaycastHit hit)
     {
         var info = hit.collider.GetComponentInParent<PlaceInfo>();
+        selectedPlaceInfo = info;
 
-        if (uiManager == null)
-        {
-            uiManager = FindObjectOfType<UIManager>();
-        }
+        uiManager.DisplayInfo(info);
+        uiManager.SetSellButton(info.childPlaces.Count == 0);
+        uiManager.OnUpgrade.RemoveAllListeners();
+        uiManager.OnUpgrade.AddListener(() => selectedPlaceInfo.currentStage++);
 
-        if (uiManager != null)
-        {
-            uiManager.DisplayInfo(info);
-            uiManager.SetSellButton(info.childPlaces.Count == 0);
-        }
+        uiManager.OnSell.RemoveAllListeners();
+        uiManager.OnSell.AddListener(() => {
+            if (selectedPlaceInfo.parentPlace != null)
+            {
+                selectedPlaceInfo.parentPlace.childPlaces.Remove(selectedPlaceInfo);
+            }
+            Destroy(selectedPlaceInfo.gameObject);
+            uiManager.HideInfo();
+        });
     }
 }
