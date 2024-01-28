@@ -76,7 +76,7 @@ public struct PopUp
 
 
 
-                Debug.Log(ValueString);
+                //Debug.Log(ValueString);
             }
             story += pagetext[i];
         }

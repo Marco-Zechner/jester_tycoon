@@ -39,6 +39,17 @@ public static class GameManager
         return true;
     }
 
+    public static void AddValue(Value valueType, int offset)
+    {
+        int valuetocheck = Values[valueType];
+        Values[valueType] = valuetocheck + offset;
+    }
+
+    public static int GetValue(Value valueType)
+    {
+        return Values[valueType];
+    }
+
     static IEnumerator EventPrompt(float delay,MonoBehaviour mono)
     {
         yield return new WaitForSeconds(delay);

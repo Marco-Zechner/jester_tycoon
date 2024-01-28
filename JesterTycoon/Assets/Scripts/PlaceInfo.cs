@@ -14,11 +14,18 @@ public class PlaceInfo : MonoBehaviour{
     public int CurrentStage { 
         get => currentStage; 
         set {
-            currentStage = value;
-            if (buildingInfo != null && buildingInfo.stages.Length > currentStage)
+            int money = GameManager.GetValue(GameManager.Value.Money);
+            Debug.Log("Money: " + money + " Cost: " + buildingInfo.stages[value].cost.amount);
+            if (money > buildingInfo.stages[value].cost.amount)
             {
-                Destroy(model);
-                model = Instantiate(buildingInfo.stages[currentStage].prefab, transform);
+                GameManager.AddValue(GameManager.Value.Money, -buildingInfo.stages[value].cost.amount);
+                Debug.Log("Money: " + money);
+                currentStage = value;
+                if (buildingInfo != null && buildingInfo.stages.Length > currentStage)
+                {
+                    Destroy(model);
+                    model = Instantiate(buildingInfo.stages[currentStage].prefab, transform);
+                }
             }
         }
     }
