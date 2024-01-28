@@ -28,7 +28,7 @@ MonoBehaviour:
       amount: 400
     maxVisitors: 10
     effectRadius: 0
-    prefab: {fileID: 6385806679103366516, guid: ce9d322e065ac104693f10a2e40097d6, type: 3}
+    prefab: {fileID: 2143118002544283449, guid: 1dee0c5fda8907140a3a2d4045958c1a, type: 3}
     resources:
     - type: 0
       amount: 20
@@ -68,7 +68,7 @@ MonoBehaviour:
       amount: 800
     maxVisitors: 20
     effectRadius: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 5609124288201512481, guid: f038f4c52e8d7f44a9549cddebbd2c7a, type: 3}
     resources:
     - type: 0
       amount: 40
@@ -108,7 +108,7 @@ MonoBehaviour:
       amount: 1600
     maxVisitors: 35
     effectRadius: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 1292916564310691244, guid: db78549a4c535b44d8d5d710e4a95cac, type: 3}
     resources:
     - type: 0
       amount: 80
