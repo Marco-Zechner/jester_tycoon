@@ -25,7 +25,8 @@ MonoBehaviour:
       type: 0
       amount: 300
     maxVisitors: 6
-    prefab: {fileID: 5205682836096330557, guid: cd4232b59987e3d4a90880c7e12020ec, type: 3}
+    effectRadius: 0
+    prefab: {fileID: 0}
     resources:
     - type: 0
       amount: 15
@@ -50,6 +51,86 @@ MonoBehaviour:
       usageType: 1
       VisitorDependent: 0
       perSecond: 1
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+  - unlockCost:
+      type: 1
+      amount: 250
+    cost:
+      type: 0
+      amount: 500
+    maxVisitors: 14
+    effectRadius: 0
+    prefab: {fileID: 0}
+    resources:
+    - type: 0
+      amount: 30
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 2
+      amount: 8
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 3
+      amount: 8
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 45
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+  - unlockCost:
+      type: 1
+      amount: 500
+    cost:
+      type: 0
+      amount: 800
+    maxVisitors: 25
+    effectRadius: 0
+    prefab: {fileID: 0}
+    resources:
+    - type: 0
+      amount: 60
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 2
+      amount: 12
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 3
+      amount: 16
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 1
+      amount: 90
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
       perVisitor: 1
     - type: 4
       amount: 1

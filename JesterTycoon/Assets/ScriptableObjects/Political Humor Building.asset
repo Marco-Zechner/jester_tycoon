@@ -21,12 +21,13 @@ MonoBehaviour:
   constantResources: []
   stages:
   - unlockCost:
-      type: 0
-      amount: 0
+      type: 1
+      amount: 300
     cost:
       type: 0
-      amount: 0
+      amount: 400
     maxVisitors: 10
+    effectRadius: 0
     prefab: {fileID: 6385806679103366516, guid: ce9d322e065ac104693f10a2e40097d6, type: 3}
     resources:
     - type: 0
@@ -58,4 +59,84 @@ MonoBehaviour:
       usageType: 1
       VisitorDependent: 0
       perSecond: 1
+      perVisitor: 1
+  - unlockCost:
+      type: 1
+      amount: 500
+    cost:
+      type: 0
+      amount: 800
+    maxVisitors: 20
+    effectRadius: 0
+    prefab: {fileID: 0}
+    resources:
+    - type: 0
+      amount: 40
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 2
+      amount: 10
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 3
+      amount: 10
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 60
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+  - unlockCost:
+      type: 1
+      amount: 900
+    cost:
+      type: 0
+      amount: 1600
+    maxVisitors: 35
+    effectRadius: 0
+    prefab: {fileID: 0}
+    resources:
+    - type: 0
+      amount: 80
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 2
+      amount: 20
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 3
+      amount: 20
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 10
+      perVisitor: 1
+    - type: 4
+      amount: 1
+      usageType: 0
+      VisitorDependent: 0
+      perSecond: 1
+      perVisitor: 1
+    - type: 1
+      amount: 120
+      usageType: 1
+      VisitorDependent: 0
+      perSecond: 10
       perVisitor: 1

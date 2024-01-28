@@ -25,7 +25,8 @@ MonoBehaviour:
       type: 0
       amount: 100
     maxVisitors: 0
-    prefab: {fileID: 0}
+    effectRadius: 0
+    prefab: {fileID: 919132149155446097, guid: ee95c4c5b96ead44d91f9a5d151a751c, type: 3}
     resources:
     - type: 0
       amount: 5
@@ -43,7 +44,7 @@ MonoBehaviour:
       amount: 5
       usageType: 0
       VisitorDependent: 0
-      perSecond: 1
+      perSecond: 10
       perVisitor: 1
     - type: 4
       amount: 5
