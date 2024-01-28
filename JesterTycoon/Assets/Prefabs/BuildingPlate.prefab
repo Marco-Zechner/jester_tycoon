@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb46d24d92ff11d4494a5f5e89b2e85e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentPlace: {fileID: 0}
   childPlaces: []
 --- !u!1 &8719038534924493344
 GameObject:

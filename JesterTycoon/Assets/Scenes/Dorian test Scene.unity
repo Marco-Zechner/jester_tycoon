@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b5287d6f6f3b44194ac9d925bfeb14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Sensitivity: 1
   Basespeed: 1
   Shiftspeed: 10.4
 --- !u!135 &223594420
@@ -373,7 +374,34 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 64
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!1 &316122867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+  m_PrefabInstance: {fileID: 1341131863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &316122868
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316122867}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9011440593365093855, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
 --- !u!1 &416009885
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,7 +828,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1246483691}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473059102}
+        m_TargetAssemblyTypeName: PopUpHandler, Assembly-CSharp
+        m_MethodName: ShowAnswerPopUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1025533784}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1914523957}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1246483691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1075,6 +1127,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338346858}
   m_CullTransparentMesh: 1
+--- !u!1001 &1341131863
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 316122868}
+  m_SourcePrefab: {fileID: 100100000, guid: 4b25c4379fb0a6a43909c47ce7182fdf, type: 3}
 --- !u!1 &1368955911
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,7 +1321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1387581630
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1307,8 +1431,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f283b1ef26aba3e4a8c97881101a0751, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  popUpAnswer: {fileID: 0}
-  popUpQuestion: {fileID: 0}
 --- !u!114 &1473059103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,7 +1443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f01e25710717d14da4671a88fd5f5dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Titles: []
+  QuestionsTitles: []
+  AnswerTitles: []
 --- !u!1 &1489105692
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1527,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1489105695}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1473059102}
+        m_TargetAssemblyTypeName: PopUpHandler, Assembly-CSharp
+        m_MethodName: ShowAnswerPopUp
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1587310381}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1914523957}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1489105695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1634,12 +1781,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'A scarred looking old Man ist running, well at least trying, toward you,
-    he is a bit out of breath.
-
-
-    "Help me, I lost my wife at the last Comedy
-    Show!"'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2969ad786eccf074fbdf5f9d562be345, type: 2}
   m_sharedMaterial: {fileID: -7831211078666698497, guid: 2969ad786eccf074fbdf5f9d562be345, type: 2}
@@ -1760,9 +1902,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dcdd304c70c9b2489be20adae8e7189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 1000
-  Multiplier: 100
-  PopupDelay: 5
+  money: 100
+  Multiplier: 0
+  PopupDelay: 0
 --- !u!1 &1914523957
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,3 +2200,4 @@ SceneRoots:
   - {fileID: 1773343347}
   - {fileID: 1288288854}
   - {fileID: 1976635371}
+  - {fileID: 1341131863}
