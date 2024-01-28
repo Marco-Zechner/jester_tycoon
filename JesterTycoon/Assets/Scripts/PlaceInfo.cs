@@ -8,8 +8,21 @@ public class PlaceInfo : MonoBehaviour{
     public List<PlaceInfo> childPlaces = new List<PlaceInfo>();
     public SOBuilding buildingInfo;
 
+    public GameObject model;
+
     public int currentVisitors = 0;
-    public int currentStage = 0;
+    public int CurrentStage { 
+        get => currentStage; 
+        set {
+            currentStage = value;
+            if (buildingInfo != null && buildingInfo.stages.Length > currentStage)
+            {
+                Destroy(model);
+                model = Instantiate(buildingInfo.stages[currentStage].prefab, transform);
+            }
+        }
+    }
+    private int currentStage = 0;
 
     Dictionary<ResourceType, PlaceInfo> providers = new Dictionary<ResourceType, PlaceInfo>();
     Dictionary<ResourceType, List<PlaceInfo>> consumers = new Dictionary<ResourceType, List<PlaceInfo>>();
@@ -98,7 +111,7 @@ public class PlaceInfo : MonoBehaviour{
         foreach (PlaceInfo place in places)
         {
             if (place == this) continue;
-            if (Vector3.Distance(place.transform.position, transform.position) <= place.buildingInfo.stages[place.currentStage].effectRadius)
+            if (Vector3.Distance(place.transform.position, transform.position) <= place.buildingInfo.stages[place.CurrentStage].effectRadius)
             {
                 placesInRange.Add(place);
             }
@@ -114,9 +127,9 @@ public class PlaceInfo : MonoBehaviour{
     public int SpreadVisitors(int visitors)
     {
         int maxVisitors = 0;
-        if (buildingInfo != null && buildingInfo.stages.Length > currentStage)
+        if (buildingInfo != null && buildingInfo.stages.Length > CurrentStage)
         {
-            maxVisitors = buildingInfo.stages[currentStage].maxVisitors;
+            maxVisitors = buildingInfo.stages[CurrentStage].maxVisitors;
         }
 
         if (visitors > maxVisitors)
@@ -145,26 +158,26 @@ public class PlaceInfo : MonoBehaviour{
 
     public bool HasUpgrade()
     {
-        return buildingInfo.stages.Length > currentStage + 1;
+        return buildingInfo.stages.Length > CurrentStage + 1;
     }
 
     public int UpgradeCost()
     {
-        return buildingInfo.stages[currentStage + 1].cost.amount;
+        return buildingInfo.stages[CurrentStage + 1].cost.amount;
     }
 
     public int GetUpgradedValueOfType(ResourceType type)
     {
-        return GetValueOfTypeStage(type, currentStage + 1);
+        return GetValueOfTypeStage(type, CurrentStage + 1);
     }
     public int SellValue()
     {
-        return buildingInfo.stages[currentStage].cost.amount;
+        return buildingInfo.stages[CurrentStage].cost.amount;
     }
 
     public int GetValueOfType(ResourceType type)
     {
-        return GetValueOfTypeStage(type, currentStage);
+        return GetValueOfTypeStage(type, CurrentStage);
     }
 
     private int GetValueOfTypeStage(ResourceType type, int currentStage)

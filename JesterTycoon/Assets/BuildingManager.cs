@@ -191,7 +191,7 @@ public class BuildingManager : MonoBehaviour
     public void PlaceBuilding()
     {
         var buildingGround = Instantiate(groundPrefab, currentBuildingPosition, Quaternion.Euler(0, currentBuildingRotation, 0), ObjectHolder.transform);
-        Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(-90, currentBuildingRotation, 0), buildingGround.transform);        
+        buildingGround.GetComponent<PlaceInfo>().model = Instantiate(currentBuilding, currentBuildingPosition, Quaternion.Euler(-90, currentBuildingRotation, 0), buildingGround.transform);        
 
         if(uiManager != null)
         {

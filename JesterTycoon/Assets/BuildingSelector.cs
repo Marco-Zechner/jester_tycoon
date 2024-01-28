@@ -62,7 +62,7 @@ public class BuildingSelector : MonoBehaviour
         uiManager.DisplayInfo(info);
         uiManager.SetSellButton(info.childPlaces.Count == 0);
         uiManager.OnUpgrade.RemoveAllListeners();
-        uiManager.OnUpgrade.AddListener(() => selectedPlaceInfo.currentStage++);
+        uiManager.OnUpgrade.AddListener(() => selectedPlaceInfo.CurrentStage++);
 
         uiManager.OnSell.RemoveAllListeners();
         uiManager.OnSell.AddListener(() => {
